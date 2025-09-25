@@ -8,7 +8,7 @@ import FAQ from '@/components/FAQ';
 import { treatments } from '@/lib/content';
 import { useLanguage } from '@/hooks/useLanguage';
 import Link from 'next/link';
-import { ArrowRight, Star, CheckCircle, Award, Shield, Users, Clock } from 'lucide-react';
+import { ArrowRight, Star, CheckCircle, Award, Shield, Users, Clock, MessageCircle, Calendar } from 'lucide-react';
 
 export default function Home() {
   const { language } = useLanguage();

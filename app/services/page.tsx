@@ -56,12 +56,12 @@ export default function Services() {
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch">
             {services.map((s) => (
-              <div key={`details-${s.id}`} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col">
+              <div key={`details-${s.id}`} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col h-full">
                 <div className="relative w-full h-52 md:h-60 bg-gray-50">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={(s as any).image || `/placeholders/service-${s.id}.jpg`} alt={s.title[language.code]} className="w-full h-full object-cover" />
                 </div>
-                <div className="p-6 flex flex-col gap-4">
+                <div className="p-6 flex flex-col gap-4 flex-1">
                   <div className="flex items-center space-x-3 rtl:space-x-reverse">
                     <div className="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center text-xl">
                       {s.icon}

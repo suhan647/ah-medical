@@ -558,5 +558,27 @@ export const services: Service[] = [
       ar: ['مطاعم عربية متوفرة', 'اقتراحات غذائية بعد العلاج'],
       en: ['Arabian restaurants available', 'Post-treatment dietary suggestions']
     }
+  },
+  {
+    id: '7',
+    title: {
+      ar: 'تأجير سيارات أجرة مع مترجم عربي',
+      en: 'Rental Taxis with Arabic Translation'
+    },
+    description: {
+      ar: 'سيارات مع سائقين موثوقين ومترجم عربي لمرافقتك في المواعيد والتنقل اليومي',
+      en: 'Reliable drivers with an Arabic translator to accompany you for appointments and daily travel'
+    },
+    icon: '🚖',
+    image: 'https://images.pexels.com/photos/9800005/pexels-photo-9800005.jpeg',
+    highlights: {
+      ar: ['سائقون موثوقون', 'أسعار شفافة', 'مرافقة مترجم'],
+      en: ['Trusted drivers', 'Transparent pricing', 'Translator accompaniment']
+    },
+    ctaLabel: { ar: 'احجز سيارتك الآن', en: 'Book Your Taxi Now' },
+    features: {
+      ar: ['استقبال وتوديع المطار', 'تنقلات للمواعيد الطبية', 'جولات سياحية', 'سيارات مكيفة ومريحة'],
+      en: ['Airport pick-up & drop', 'Clinic/hospital transfers', 'Tourist trips', 'Comfortable AC cars']
+    }
   }
 ];

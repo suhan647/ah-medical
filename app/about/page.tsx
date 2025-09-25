@@ -61,6 +61,18 @@ export default function About() {
       {/* Specialties */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Company Overview */}
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              {language.code === 'ar' ? 'عن الشركة' : 'About the Company'}
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
+              {language.code === 'ar'
+                ? 'آه للسياحة الطبية هي شركة متخصصة في تنسيق رحلات العلاج في بنغالور، الهند. نقدم حلولاً شاملة تشمل تقييم التقارير الطبية، اختيار المستشفى والطبيب المناسب، التأشيرة، الاستقبال في المطار، الإقامة، الترجمة الطبية، والمتابعة بعد العلاج. هدفنا هو تقديم تجربة علاجية آمنة ومريحة بمعايير جودة عالمية.'
+                : 'AH Medical Tourism specializes in coordinating medical journeys in Bangalore, India. We provide end-to-end solutions including report assessment, selecting the right hospital and doctor, visa assistance, airport pickup, accommodation, medical translation, and post-treatment follow-up. Our goal is a safe, comfortable experience with global quality standards.'}
+            </p>
+          </div>
+
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               {language.code === 'ar' ? 'تخصصاتنا' : 'Our Specialties'}

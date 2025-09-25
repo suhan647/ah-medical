@@ -25,11 +25,14 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
 
   useEffect(() => {
     const stored = typeof window !== 'undefined' ? localStorage.getItem('language') : null;
+    // Default to Arabic unless the user explicitly saved 'en'
     const initial = stored === 'en' ? languages.find(l => l.code === 'en')! : defaultLanguage;
     setLanguageState(initial);
-    try {
-      localStorage.setItem('language', initial.code);
-    } catch {}
+    if (!stored) {
+      try {
+        localStorage.setItem('language', initial.code);
+      } catch {}
+    }
   }, []);
 
   // We intentionally avoid touching documentElement here to prevent
