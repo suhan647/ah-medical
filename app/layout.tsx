@@ -12,21 +12,23 @@ const cairo = Cairo({ subsets: ['arabic', 'latin'], variable: '--font-cairo' });
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'AH Medical Tourisms - أفضل خدمات السياحة الطبية في بنغالور',
-  description: 'خدمات سياحة طبية متكاملة مع مترجم عربي في بنغالور. علاج الأسنان، البروستاتا، العلاج الطبيعي مع أفضل الأطباء في الهند.',
-  keywords: 'السياحة الطبية, بنغالور, علاج الأسنان, البروستاتا, مترجم عربي, طبيب, الهند, medical tourism, Bangalore, dental treatment, prostate, Arabic translator',
+  title: 'AH Medical Tourism - Premium Healthcare Services in Bangalore | Arabic Support',
+  description: 'Leading medical tourism company in Bangalore offering world-class healthcare with Arabic translation. Dental implants, prostate treatment, cosmetic surgery with certified doctors and JCI-accredited hospitals.',
+  keywords: 'medical tourism Bangalore, Arabic medical translator India, dental implants Bangalore, prostate treatment India, cosmetic surgery Bangalore, JCI accredited hospitals, medical visa India, healthcare tourism',
   authors: [{ name: 'AH Medical Tourisms' }],
   openGraph: {
-    title: 'AH Medical Tourisms - Premier Medical Tourism in Bangalore',
-    description: 'Comprehensive medical tourism services with Arabic translation in Bangalore. Dental, prostate, natural treatments with India\'s best doctors.',
+    title: 'AH Medical Tourism - World-Class Healthcare in Bangalore',
+    description: 'Trusted medical tourism services with Arabic support. JCI-accredited hospitals, certified specialists, comprehensive care packages.',
     images: ['/og-image.jpg'],
     locale: 'ar_SA',
     alternateLocale: 'en_US',
+    type: 'website',
+    siteName: 'AH Medical Tourism',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AH Medical Tourisms - Medical Tourism in Bangalore',
-    description: 'Quality medical treatment with Arabic translation services',
+    title: 'AH Medical Tourism - Trusted Healthcare in Bangalore',
+    description: 'Premium medical tourism with Arabic support, certified doctors, JCI hospitals',
   },
   alternates: {
     canonical: 'https://ahmedtourisms.com',
@@ -35,6 +37,7 @@ export const metadata: Metadata = {
       'en': 'https://ahmedtourisms.com/en',
     },
   },
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
 };
 
 export default function RootLayout({
@@ -49,6 +52,7 @@ export default function RootLayout({
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="google" content="notranslate" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta httpEquiv="Content-Language" content="ar" />
         <script
           type="application/ld+json"
@@ -56,15 +60,32 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "MedicalBusiness",
-              "name": "AH Medical Tourisms",
-              "description": "Medical tourism services with Arabic translation in Bangalore",
+              "name": "AH Medical Tourism",
+              "description": "Premium medical tourism services with Arabic translation in Bangalore, India",
+              "url": "https://ahmedtourisms.com",
+              "logo": "https://ahmedtourisms.com/logo.png",
+              "image": "https://ahmedtourisms.com/og-image.jpg",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Bangalore",
-                "addressCountry": "IN"
+                "addressRegion": "Karnataka",
+                "addressCountry": "IN",
+                "postalCode": "560001"
               },
               "telephone": "+917204832004",
-              "url": "https://ahmedtourisms.com",
+              "email": "info@ahmedtourisms.com",
+              "priceRange": "$$",
+              "currenciesAccepted": "INR, USD, SAR, AED",
+              "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+              "openingHours": "Mo-Su 09:00-20:00",
+              "areaServed": {
+                "@type": "Country",
+                "name": "India"
+              },
+              "serviceArea": {
+                "@type": "City",
+                "name": "Bangalore"
+              },
               "medicalSpecialty": ["Dentistry", "Urology", "Orthopedics"],
               "languagesSpoken": ["Arabic", "English", "Hindi"]
             })

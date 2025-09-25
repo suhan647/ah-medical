@@ -18,7 +18,6 @@ const Header = () => {
     { href: '/about', label: navigation.about },
     { href: '/services', label: navigation.services },
     { href: '/treatments', label: navigation.treatments },
-    { href: '/tourism', label: navigation.tourism },
     { href: '/contact', label: navigation.contact },
   ];
 

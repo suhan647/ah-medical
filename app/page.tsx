@@ -1,11 +1,14 @@
 "use client";
 
 import Hero from '@/components/Hero';
-import ServicesSection from '@/components/ServicesSection';
+import WhyChooseUs from '@/components/WhyChooseUs';
+import Testimonials from '@/components/Testimonials';
+import Partners from '@/components/Partners';
+import FAQ from '@/components/FAQ';
 import { treatments } from '@/lib/content';
 import { useLanguage } from '@/hooks/useLanguage';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Star, CheckCircle } from 'lucide-react';
 
 export default function Home() {
   const { language } = useLanguage();
@@ -13,41 +16,50 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <ServicesSection />
+      <WhyChooseUs />
       
       {/* Treatments Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-blue-50 to-teal-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="section-title text-gray-900 mb-4">
               {language.code === 'ar' ? 'العلاجات المتخصصة' : 'Specialized Treatments'}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               {language.code === 'ar' 
-                ? 'نقدم أحدث العلاجات الطبية مع أفضل الأطباء المتخصصين في الهند'
-                : 'We offer the latest medical treatments with India\'s best specialized doctors'
+                ? 'نقدم أحدث العلاجات الطبية مع أفضل الأطباء المتخصصين في مستشفيات معتمدة دولياً'
+                : 'We offer the latest medical treatments with top specialists in internationally accredited hospitals'
               }
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {treatments.map((treatment) => (
               <Link
                 key={treatment.id}
                 href={`/treatments/${treatment.slug}`}
-                className="group bg-white rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-teal-200"
+                className="group bg-white rounded-2xl p-6 md:p-7 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-teal-200 h-full flex flex-col"
               >
                 <div className="text-center">
-                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
+                  <div className="text-4xl md:text-5xl mb-3 group-hover:scale-110 transition-transform">
                     {treatment.icon}
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
                     {treatment.title[language.code]}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
                     {treatment.description[language.code]}
                   </p>
-                  <div className="flex items-center justify-center space-x-2 rtl:space-x-reverse text-teal-600 font-medium">
+                  
+                  {/* Rating */}
+                  <div className="flex items-center justify-center space-x-1 rtl:space-x-reverse mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={16} className="text-yellow-400 fill-current" />
+                    ))}
+                    <span className="text-sm text-gray-500 ml-2 rtl:mr-2">(4.9)</span>
+                  </div>
+
+                  <div className="mt-auto pt-4 flex items-center justify-center space-x-2 rtl:space-x-reverse text-teal-600 font-medium">
                     <span>{language.code === 'ar' ? 'اعرف المزيد' : 'Learn More'}</span>
                     <ArrowRight size={16} className="rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                   </div>
@@ -55,103 +67,50 @@ export default function Home() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                {language.code === 'ar' ? 'لماذا تختار آه للسياحة الطبية؟' : 'Why Choose AH Medical Tourisms?'}
-              </h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4 rtl:space-x-reverse">
-                  <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold">1</span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {language.code === 'ar' ? 'مترجم طبي متخصص' : 'Specialized Medical Translator'}
-                    </h3>
-                    <p className="text-gray-600">
-                      {language.code === 'ar' 
-                        ? 'مترجم عربي متخصص يرافقك في جميع المواعيد الطبية ويشرح لك كافة التفاصيل'
-                        : 'Arabic translator accompanies you to all medical appointments and explains all details'
-                      }
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4 rtl:space-x-reverse">
-                  <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold">2</span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {language.code === 'ar' ? 'أفضل المستشفيات' : 'Best Hospitals'}
-                    </h3>
-                    <p className="text-gray-600">
-                      {language.code === 'ar' 
-                        ? 'شراكات مع أفضل المستشفيات والعيادات في بنغالور مع أحدث المعدات'
-                        : 'Partnerships with Bangalore\'s best hospitals and clinics with latest equipment'
-                      }
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4 rtl:space-x-reverse">
-                  <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold">3</span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {language.code === 'ar' ? 'خدمات شاملة' : 'Comprehensive Services'}
-                    </h3>
-                    <p className="text-gray-600">
-                      {language.code === 'ar' 
-                        ? 'من الاستقبال في المطار إلى الإقامة والجولات السياحية، نهتم بكل التفاصيل'
-                        : 'From airport pickup to accommodation and tours, we handle every detail'
-                      }
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative">
-              <img
-                src="https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg"
-                alt="Medical consultation"
-                className="rounded-2xl shadow-2xl"
-              />
-              <div className="absolute inset-0 bg-teal-600/10 rounded-2xl"></div>
-            </div>
+          <div className="text-center mt-12">
+            <Link
+              href="/treatments"
+              className="medical-button inline-flex items-center space-x-2 rtl:space-x-reverse"
+            >
+              <span>{language.code === 'ar' ? 'عرض جميع العلاجات' : 'View All Treatments'}</span>
+              <ArrowRight size={20} className="rtl:rotate-180" />
+            </Link>
           </div>
         </div>
       </section>
 
+      <Testimonials />
+      <Partners />
+      <FAQ />
+
       {/* CTA Section */}
-      <section className="py-20 bg-teal-600">
+      <section className="py-16 md:py-20 professional-gradient">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="section-title text-white mb-6">
             {language.code === 'ar' ? 'ابدأ رحلتك العلاجية اليوم' : 'Start Your Medical Journey Today'}
           </h2>
-          <p className="text-xl text-teal-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             {language.code === 'ar' 
-              ? 'تواصل معنا عبر واتساب للحصول على استشارة مجانية وخطة علاجية مخصصة لحالتك'
-              : 'Contact us via WhatsApp for free consultation and personalized treatment plan'
+              ? 'احصل على استشارة مجانية وخطة علاجية مخصصة مع أفضل الأطباء في بنغالور'
+              : 'Get free consultation and personalized treatment plan with Bangalore\'s best doctors'
             }
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center space-x-3 rtl:space-x-reverse bg-white text-teal-600 hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
-          >
-            <span>{language.code === 'ar' ? 'احجز استشارتك المجانية' : 'Book Free Consultation'}</span>
-            <ArrowRight size={20} className="rtl:rotate-180" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              href="/contact"
+              className="bg-white text-blue-600 hover:bg-gray-50 px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold transition-colors duration-200 inline-flex items-center space-x-2 rtl:space-x-reverse"
+            >
+              <span>{language.code === 'ar' ? 'احصل على عرض سعر مجاني' : 'Get Free Quote'}</span>
+              <ArrowRight size={20} className="rtl:rotate-180" />
+            </Link>
+            <button
+              onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+              className="medical-button-outline bg-transparent border-white text-white hover:bg-white hover:text-blue-600 px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold transition-colors duration-200"
+            >
+              {language.code === 'ar' ? 'تواصل عبر واتساب' : 'Contact on WhatsApp'}
+            </button>
+          </div>
         </div>
       </section>
     </div>
