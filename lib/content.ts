@@ -438,7 +438,7 @@ export const services: Service[] = [
       en: 'Comprehensive dental treatment with latest technology'
     },
     icon: '🦷',
-    image: '/placeholders/dental-services.png',
+    image: 'https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg',
     highlights: {
       ar: ['أطباء أسنان معتمدون', 'تقنيات تصوير حديثة', 'تعقيم ومعايير سلامة عالية'],
       en: ['Board-certified dentists', 'Modern imaging technology', 'High sterilization standards']
@@ -460,7 +460,7 @@ export const services: Service[] = [
       en: 'Specialized medical translator accompanying you to all appointments'
     },
     icon: '🗣️',
-    image: '/placeholders/medical-translation.png',
+    image: 'https://images.pexels.com/photos/5327921/pexels-photo-5327921.jpeg',
     highlights: {
       ar: ['ترجمة متخصصة للمصطلحات الطبية', 'خصوصية كاملة', 'مرافقة في المواعيد'],
       en: ['Specialized medical terminology', 'Full confidentiality', 'Accompaniment at appointments']
@@ -482,7 +482,7 @@ export const services: Service[] = [
       en: 'Hotel and service apartment booking with transport services'
     },
     icon: '🏨',
-    image: '/placeholders/accommodation-transport.png',
+    image: 'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg',
     highlights: {
       ar: ['خيارات قريبة من المستشفى', 'سائقون موثوقون', 'أسعار تنافسية'],
       en: ['Hospital-adjacent options', 'Trusted drivers', 'Competitive pricing']
@@ -493,30 +493,8 @@ export const services: Service[] = [
       en: ['Hotel Booking', 'Service Apartments', 'Car Rental', 'Airport Pickup', 'Rental taxis with Arabic translation']
     }
   },
-  // {
-  //   id: '4',
-  //   title: {
-  //     ar: 'السياحة في بنغالور',
-  //     en: 'Bangalore Tourism'
-  //   },
-  //   description: {
-  //     ar: 'جولات سياحية مع دليل عربي متخصص',
-  //     en: 'Tourism tours with specialized Arabic guide'
-  //   },
-  //   icon: '🏛️',
-  //   image: '/services/bangalore-tourism.jpg',
-  //   highlights: {
-  //     ar: ['أماكن شهيرة', 'مطاعم عربية', 'تسوق'],
-  //     en: ['Famous spots', 'Arabic cuisine', 'Shopping']
-  //   },
-  //   ctaLabel: { ar: 'ابدأ جولتك', en: 'Start Your Tour' },
-  //   features: {
-  //     ar: ['المعالم السياحية', 'المطاعم العربية', 'التسوق', 'الأماكن الدينية'],
-  //     en: ['Tourist Attractions', 'Arabic Restaurants', 'Shopping', 'Religious Sites']
-  //   }
-  // },
   {
-    id: '5',
+    id: '4',
     title: {
       ar: 'تنسيق السياحة العلاجية',
       en: 'Medical Tourism Coordination'
@@ -526,7 +504,7 @@ export const services: Service[] = [
       en: 'End-to-end help from report assessment to booking doctor appointments'
     },
     icon: '🧭',
-    image: '/placeholders/medical-tourism-coordination.png',
+    image: 'https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg',
     highlights: {
       ar: ['تقييم التقارير', 'تحديد المواعيد', 'متابعة بعد العلاج'],
       en: ['Report triage', 'Appointment scheduling', 'Post-care follow up']
@@ -538,7 +516,7 @@ export const services: Service[] = [
     }
   },
   {
-    id: '6',
+    id: '5',
     title: {
       ar: 'العلاج الطبيعي والعظام',
       en: 'Natural & Orthopedic Care'
@@ -548,7 +526,7 @@ export const services: Service[] = [
       en: 'Natural treatment for orthopedic nerve and joint pain under specialists'
     },
     icon: '🦴',
-    image: '/placeholders/natural-orthopedic-care.png',
+    image: 'https://images.pexels.com/photos/4506109/pexels-photo-4506109.jpeg',
     highlights: {
       ar: ['جلسات مخصصة', 'إشراف مختصين', 'برنامج منزلي'],
       en: ['Personalized sessions', 'Specialist oversight', 'Home program']
@@ -560,7 +538,7 @@ export const services: Service[] = [
     }
   },
   {
-    id: '7',
+    id: '6',
     title: {
       ar: 'خدمات الطعام العربي',
       en: 'Arabic Food Assistance'
@@ -570,7 +548,7 @@ export const services: Service[] = [
       en: 'Guidance to nearby Arabic restaurants and food delivery when needed'
     },
     icon: '🍽️',
-    image: '/services/arabic-food-assistance.png',
+    image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg',
     highlights: {
       ar: ['توصيات غذائية', 'مطاعم قريبة', 'خيارات توصيل'],
       en: ['Dietary tips', 'Nearby restaurants', 'Delivery options']

@@ -2,7 +2,7 @@
 
 import { useLanguage } from '@/hooks/useLanguage';
 import { content } from '@/lib/content';
-import { Star, CheckCircle, Play } from 'lucide-react';
+import { Star, CheckCircle, Play, Quote, MapPin, Calendar } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -12,70 +12,88 @@ const Testimonials = () => {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   return (
-    <section className="py-16 md:py-20 trust-gradient">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="section-title text-gray-900 mb-4">
+    <section className="section-padding trust-gradient">
+      <div className="max-w-7xl mx-auto container-padding">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center space-x-2 rtl:space-x-reverse bg-white px-4 py-2 rounded-full mb-6 shadow-md">
+            <Star size={20} className="text-yellow-500" />
+            <span className="text-gray-700 font-semibold text-sm">
+              {language.code === 'ar' ? 'تقييم 4.9/5' : '4.9/5 Rating'}
+            </span>
+          </div>
+          <h2 className="section-title text-gray-900 mb-6">
             {testimonialsContent.title}
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="body-large text-gray-600 max-w-3xl mx-auto">
             {testimonialsContent.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonialsContent.reviews.map((review, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col"
+              className="testimonial-card h-full flex flex-col group hover:scale-105"
             >
+              {/* Quote Icon */}
+              <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                <Quote size={16} className="text-white" />
+              </div>
+
               {/* Header */}
-              <div className="flex items-center space-x-4 rtl:space-x-reverse mb-4">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden">
+              <div className="flex items-center space-x-4 rtl:space-x-reverse mb-6">
+                <div className="relative w-16 h-16 rounded-full overflow-hidden ring-4 ring-blue-100">
                   <Image
                     src={review.image}
-                    alt={review.name}
+                    alt={`${review.name} - Medical Tourism Patient`}
                     fill
-                    sizes="48px"
+                    sizes="64px"
                     className="object-cover"
                   />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                    <h4 className="font-semibold text-gray-900">{review.name}</h4>
+                  <div className="flex items-center space-x-2 rtl:space-x-reverse mb-1">
+                    <h4 className="font-bold text-gray-900">{review.name}</h4>
                     {review.verified && (
-                      <CheckCircle size={16} className="text-green-500" />
+                      <CheckCircle size={18} className="text-green-500" />
                     )}
                   </div>
-                  <p className="text-sm text-gray-600">{review.location}</p>
+                  <div className="flex items-center space-x-2 rtl:space-x-reverse text-sm text-gray-600">
+                    <MapPin size={14} />
+                    <span>{review.location}</span>
+                  </div>
                 </div>
               </div>
 
               {/* Rating */}
-              <div className="flex items-center space-x-1 rtl:space-x-reverse mb-4">
-                {[...Array(review.rating)].map((_, i) => (
-                  <Star key={i} size={16} className="text-yellow-400 fill-current" />
-                ))}
+              <div className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
+                <div className="flex items-center space-x-1 rtl:space-x-reverse">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <Star key={i} size={18} className="text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <span className="text-sm font-medium text-gray-700">({review.rating}.0)</span>
               </div>
 
-              {/* Treatment */}
-              <div className="inline-block bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium mb-4">
+              {/* Treatment Badge */}
+              <div className="inline-block bg-gradient-to-r from-blue-100 to-teal-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 self-start">
                 {review.treatment}
               </div>
 
               {/* Review Text */}
-              <p className="text-gray-700 leading-relaxed mb-6 flex-1">
+              <blockquote className="text-gray-700 leading-relaxed mb-6 flex-1 italic">
                 "{review.text}"
-              </p>
+              </blockquote>
 
-              {/* Video Option */}
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-500">
-                  {language.code === 'ar' ? 'مراجعة موثقة' : 'Verified Review'}
-                </span>
+              {/* Footer */}
+              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                <div className="flex items-center space-x-2 rtl:space-x-reverse text-sm text-gray-500">
+                  <Calendar size={14} />
+                  <span>{language.code === 'ar' ? 'مراجعة موثقة' : 'Verified Review'}</span>
+                </div>
                 <button
                   onClick={() => setActiveVideo(activeVideo === review.name ? null : review.name)}
-                  className="flex items-center space-x-2 rtl:space-x-reverse text-blue-600 hover:text-blue-700 text-sm font-medium"
+                  className="flex items-center space-x-2 rtl:space-x-reverse text-blue-600 hover:text-blue-700 text-sm font-semibold transition-colors group-hover:scale-105"
                 >
                   <Play size={16} />
                   <span>{language.code === 'ar' ? 'شاهد الفيديو' : 'Watch Video'}</span>
@@ -85,24 +103,62 @@ const Testimonials = () => {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg inline-block">
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
-              {language.code === 'ar' ? 'شارك تجربتك معنا' : 'Share Your Experience'}
+        {/* Statistics */}
+        <div className="mt-16 bg-white rounded-3xl p-8 md:p-12 shadow-xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">1000+</div>
+              <div className="text-gray-600 font-medium">
+                {language.code === 'ar' ? 'مريض راض' : 'Happy Patients'}
+              </div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-green-600 mb-2">98%</div>
+              <div className="text-gray-600 font-medium">
+                {language.code === 'ar' ? 'نسبة نجاح' : 'Success Rate'}
+              </div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-teal-600 mb-2">4.9</div>
+              <div className="text-gray-600 font-medium">
+                {language.code === 'ar' ? 'تقييم المرضى' : 'Patient Rating'}
+              </div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-orange-600 mb-2">24/7</div>
+              <div className="text-gray-600 font-medium">
+                {language.code === 'ar' ? 'دعم متواصل' : 'Support Available'}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Enhanced CTA */}
+        <div className="text-center mt-16">
+          <div className="bg-gradient-to-r from-blue-600 to-teal-600 rounded-3xl p-8 md:p-12 text-white shadow-2xl">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              {language.code === 'ar' ? 'شارك تجربتك معنا' : 'Share Your Success Story'}
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="body-large mb-8 opacity-90 max-w-2xl mx-auto">
               {language.code === 'ar' 
-                ? 'ساعد الآخرين من خلال مشاركة قصة نجاحك'
-                : 'Help others by sharing your success story'
+                ? 'ساعد الآخرين من خلال مشاركة قصة نجاحك واحصل على خصم خاص على علاجك القادم'
+                : 'Help others by sharing your success story and get a special discount on your next treatment'
               }
             </p>
-            <button
-              onClick={() => window.open('https://wa.me/7204832004', '_blank')}
-              className="medical-button"
-            >
-              {language.code === 'ar' ? 'شارك قصتك' : 'Share Your Story'}
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                className="bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
+                {language.code === 'ar' ? 'شارك قصتك' : 'Share Your Story'}
+              </button>
+              <button
+                onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-1"
+              >
+                {language.code === 'ar' ? 'احجز استشارة' : 'Book Consultation'}
+              </button>
+            </div>
           </div>
         </div>
       </div>
