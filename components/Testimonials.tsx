@@ -2,7 +2,7 @@
 
 import { useLanguage } from '@/hooks/useLanguage';
 import { content } from '@/lib/content';
-import { Star, CheckCircle, Play, Quote, MapPin, Calendar } from 'lucide-react';
+import { Star, CircleCheck as CheckCircle, Play, Quote, MapPin, Calendar } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 

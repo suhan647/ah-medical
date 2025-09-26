@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from '@/hooks/useLanguage';
-import { CheckCircle, Award, Clock, DollarSign, Star } from 'lucide-react';
+import { CircleCheck as CheckCircle, Award, Clock, DollarSign, Star } from 'lucide-react';
 
 export default function DentalImplants() {
   const { language } = useLanguage();

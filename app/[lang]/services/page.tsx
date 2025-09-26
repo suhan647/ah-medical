@@ -2,7 +2,7 @@
 
 import { useLanguage } from '@/hooks/useLanguage';
 import { services } from '@/lib/content';
-import { CheckCircle } from 'lucide-react';
+import { CircleCheck as CheckCircle } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 import ServiceGallery from '@/components/ServiceGallery';
 

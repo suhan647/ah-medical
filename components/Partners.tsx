@@ -2,7 +2,7 @@
 
 import { useLanguage } from '@/hooks/useLanguage';
 import { content } from '@/lib/content';
-import { Award, MapPin, Users, Shield, Star, CheckCircle, GraduationCap } from 'lucide-react';
+import { Award, MapPin, Users, Shield, Star, CircleCheck as CheckCircle, GraduationCap } from 'lucide-react';
 import Image from 'next/image';
 
 const Partners = () => {

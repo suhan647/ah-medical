@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { ArrowRight, Play, Shield, Award, Users, Clock, CheckCircle, Star } from 'lucide-react';
+import { ArrowRight, Play, Shield, Award, Users, Clock, CircleCheck as CheckCircle, Star } from 'lucide-react';
 import Image from 'next/image';
 import { useLanguage } from '@/hooks/useLanguage';
 import { content } from '@/lib/content';

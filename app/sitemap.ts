@@ -30,6 +30,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
+    }
+  ]
   const sitemap: MetadataRoute.Sitemap = [];
 
   // Generate URLs for each language and page combination
