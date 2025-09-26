@@ -46,7 +46,7 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
             {menuItems.map((item) => {
               const isRoot = item.href === `/${language.code}`;
-              const isActive = isRoot ? pathname === `/${language.code}` : pathname.startsWith(item.href);
+              const isActive = isRoot ? pathname === `/${language.code}` : pathname?.startsWith(item.href);
               const base = 'transition-colors font-medium px-2 py-1 rounded-md';
               const active = 'text-teal-700 bg-teal-50';
               const inactive = 'text-gray-700 hover:text-teal-600';
@@ -82,7 +82,7 @@ const Header = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               {menuItems.map((item) => {
                 const isRoot = item.href === `/${language.code}`;
-                const isActive = isRoot ? pathname === `/${language.code}` : pathname.startsWith(item.href);
+                const isActive = isRoot ? pathname === `/${language.code}` : pathname?.startsWith(item.href);
                 return (
                   <Link
                     key={item.href}

@@ -3,6 +3,13 @@
 import { useEffect } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 
+// Extend Window interface to include Gupshup function
+declare global {
+  interface Window {
+    generateWhatsAppWidget?: (settings: any) => void;
+  }
+}
+
 const GupshupWidget = () => {
   const { language } = useLanguage();
 

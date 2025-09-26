@@ -161,7 +161,7 @@ export function generateStructuredData(lang: 'ar' | 'en', page?: string) {
           }
         }
       ]
-    });
+    } as any);
   }
 
   return baseData;
