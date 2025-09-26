@@ -16,7 +16,7 @@ export function generateStructuredData(lang: 'ar' | 'en', page?: string) {
         },
         contactPoint: {
           '@type': 'ContactPoint',
-          telephone: '+91-7204832004',
+          telephone: '+91-94814 92052',
           contactType: 'customer service',
           availableLanguage: ['Arabic', 'English', 'Hindi'],
           areaServed: ['IN', 'SA', 'AE', 'KW', 'QA', 'BH', 'OM'],
@@ -34,7 +34,7 @@ export function generateStructuredData(lang: 'ar' | 'en', page?: string) {
           addressCountry: 'IN'
         },
         sameAs: [
-          'https://wa.me/7204832004'
+          'https://wa.me/94814 92052'
         ],
         description: lang === 'ar' 
           ? 'شركة متخصصة في السياحة الطبية تقدم خدمات العلاج الطبي في بنغالور، الهند مع مترجم عربي متخصص'

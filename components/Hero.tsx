@@ -21,7 +21,7 @@ const Hero = ({ lang }: HeroProps) => {
   }
 
   return (
-    <section className="relative medical-gradient min-h-screen flex items-center overflow-hidden">
+    <section className="relative medical-gradient min-h-screen flex items-center overflow-x-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -29,7 +29,7 @@ const Hero = ({ lang }: HeroProps) => {
         }} />
       </div>
 
-      <div className="max-w-7xl mx-auto container-padding py-12 md:py-20 relative z-10 overflow-hidden">
+      <div className="max-w-7xl mx-auto container-padding py-12 md:py-20 relative z-10 overflow-x-hidden">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Content */}
           <div className="space-y-6 md:space-y-8 animate-fade-in-left">
@@ -99,7 +99,7 @@ const Hero = ({ lang }: HeroProps) => {
               </Link>
               
               <button 
-                onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
                 className="whatsapp-button inline-flex items-center justify-center space-x-2 rtl:space-x-reverse"
               >
                 <span>{heroContent.cta_secondary}</span>
@@ -136,7 +136,7 @@ const Hero = ({ lang }: HeroProps) => {
           </div>
 
           {/* Hero Image */}
-          <div className="relative animate-fade-in-right overflow-hidden">
+          <div className="relative animate-fade-in-right overflow-visible hero-image-container">
             <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden medical-shadow">
               <div className="aspect-[4/3] relative">
                 <Image
@@ -164,7 +164,7 @@ const Hero = ({ lang }: HeroProps) => {
                         </div>
                       </div>
                       <button
-                        onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                        onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
                         className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-sm sm:text-base"
                       >
                         {validLang === 'ar' ? 'واتساب' : 'WhatsApp'}
@@ -176,16 +176,16 @@ const Hero = ({ lang }: HeroProps) => {
             </div>
 
             {/* Floating Trust Badges - Responsive positioning */}
-            <div className="absolute top-2 right-2 sm:-top-6 sm:-right-6 bg-gradient-to-r from-blue-600 to-teal-600 text-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-xl">
-              <Award size={20} className="sm:w-7 sm:h-7" />
+            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 rtl:right-auto rtl:left-2 rtl:sm:left-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white p-2 sm:p-3 rounded-xl sm:rounded-2xl shadow-xl">
+              <Award size={20} className="sm:w-6 sm:h-6" />
             </div>
-            <div className="absolute bottom-2 left-2 sm:-bottom-6 sm:-left-6 bg-gradient-to-r from-green-500 to-teal-500 text-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-xl">
-              <Users size={20} className="sm:w-7 sm:h-7" />
+            <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 rtl:left-auto rtl:right-2 rtl:sm:right-4 bg-gradient-to-r from-green-500 to-teal-500 text-white p-2 sm:p-3 rounded-xl sm:rounded-2xl shadow-xl">
+              <Users size={20} className="sm:w-6 sm:h-6" />
             </div>
             
             {/* Certification Badge - Responsive positioning */}
-            <div className="absolute top-2 left-2 sm:top-6 sm:left-6 certification-badge">
-              <Shield size={12} className="sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+            <div className="absolute top-2 left-2 sm:top-4 sm:left-4 rtl:left-auto rtl:right-2 rtl:sm:right-4 certification-badge">
+              <Shield size={12} className="sm:w-4 sm:h-4 mr-1 sm:mr-2 rtl:mr-0 rtl:ml-1 rtl:sm:ml-2" />
               <span className="text-xs font-bold">JCI</span>
             </div>
           </div>

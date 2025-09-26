@@ -82,7 +82,7 @@ export default function DentalImplants() {
               </div>
 
               <button
-                onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
                 className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
               >
                 {language.code === 'ar' ? 'احجز استشارتك المجانية' : 'Book Free Consultation'}
@@ -260,7 +260,7 @@ export default function DentalImplants() {
             </div>
 
             <button
-              onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+              onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
               className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors"
             >
               {language.code === 'ar' ? 'احصل على عرض سعر مجاني' : 'Get Free Quote'}
@@ -282,7 +282,7 @@ export default function DentalImplants() {
             }
           </p>
           <button
-            onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+            onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
             className="bg-white text-teal-600 hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold transition-colors"
           >
             {language.code === 'ar' ? 'تواصل معنا عبر واتساب' : 'Contact us via WhatsApp'}

@@ -9,7 +9,7 @@ interface ContactInfoProps {
 
 export default function ContactInfo({ lang, contactContent }: ContactInfoProps) {
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/7204832004', '_blank');
+    window.open('https://wa.me/94814 92052', '_blank');
   };
 
   return (

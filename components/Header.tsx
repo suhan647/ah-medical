@@ -26,16 +26,16 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-lg sticky top-0 z-40">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mobile-header-spacing">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo */}
           <Link href={`/${language.code}`} className="flex items-center space-x-2 rtl:space-x-reverse">
-            <div className="relative h-24 md:h-24 w-[220px] md:w-[340px]">
+            <div className="relative h-20 sm:h-24 md:h-28 lg:h-32 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[320px] xl:w-[360px]">
               <Image
                 src={language.code === 'ar' ? '/logos/ah-medical-travles-logo-ar.png' : '/logos/ah-medical-travles-logo-en.png'}
                 alt={content.header[language.code].company}
                 fill
-                sizes="(max-width: 768px) 220px, 340px"
+                sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 260px, (max-width: 1280px) 320px, 360px"
                 className="object-contain"
                 priority
               />
@@ -65,13 +65,13 @@ const Header = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-4 rtl:space-x-reverse">
+          <div className="md:hidden flex items-center space-x-3 rtl:space-x-reverse mobile-menu-spacing">
             <LanguageSwitcher />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-teal-600 transition-colors"
+              className="text-gray-700 hover:text-teal-600 transition-colors p-1"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>

@@ -89,7 +89,7 @@ export default function ServiceGallery() {
               </ul>
               <div className="mt-5">
                 <a
-                  href="https://wa.me/7204832004"
+                  href="https://wa.me/94814 92052"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex w-full justify-center bg-teal-600 hover:bg-teal-700 text-white py-2.5 rounded-lg font-semibold"

@@ -107,7 +107,7 @@ const Partners = ({ lang }: PartnersProps) => {
                   </div>
                   
                   <button
-                    onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                    onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
                     className="mt-auto cta-primary w-full"
                   >
                     {lang === 'ar' ? 'استفسر الآن' : 'Enquire Now'}
@@ -214,13 +214,13 @@ const Partners = ({ lang }: PartnersProps) => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
-                  onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                  onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
                   className="cta-primary"
                 >
                   {lang === 'ar' ? 'احجز موعدك الآن' : 'Book Your Appointment'}
                 </button>
                 <button
-                  onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                  onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
                   className="whatsapp-button"
                 >
                   {lang === 'ar' ? 'تواصل عبر واتساب' : 'Contact on WhatsApp'}

@@ -149,13 +149,13 @@ const Testimonials = ({ lang }: TestimonialsProps) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
                 className="bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 {lang === 'ar' ? 'شارك قصتك' : 'Share Your Story'}
               </button>
               <button
-                onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-1"
               >
                 {lang === 'ar' ? 'احجز استشارة' : 'Book Consultation'}

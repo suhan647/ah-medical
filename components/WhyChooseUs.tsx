@@ -100,13 +100,13 @@ const WhyChooseUs = ({ lang }: WhyChooseUsProps) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
                 className="cta-primary"
               >
                 {validLang === 'ar' ? 'تواصل معنا الآن' : 'Contact Us Now'}
               </button>
               <button
-                onClick={() => window.open('https://wa.me/7204832004', '_blank')}
+                onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
                 className="cta-secondary"
               >
                 {validLang === 'ar' ? 'احصل على عرض سعر' : 'Get Free Quote'}

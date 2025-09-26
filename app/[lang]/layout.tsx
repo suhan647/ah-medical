@@ -4,7 +4,7 @@ import { Cairo, Inter } from 'next/font/google';
 import { LanguageProvider } from '@/hooks/useLanguage';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
+import GupshupWidget from '@/components/GupshupWidget';
 import LanguageBoundary from '@/components/LanguageBoundary';
 import DirLangController from '@/components/DirLangController';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo-metadata';
@@ -44,6 +44,7 @@ export default function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={lang} dir={isRTL ? 'rtl' : 'ltr'}>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
@@ -52,6 +53,7 @@ export default function LocaleLayout({ children, params }: Props) {
         <link rel="alternate" hrefLang="ar" href="https://ahmedtourisms.com/ar" />
         <link rel="alternate" hrefLang="en" href="https://ahmedtourisms.com/en" />
         <link rel="alternate" hrefLang="x-default" href="https://ahmedtourisms.com/ar" />
+        <script async src="https://www.gupshup.ai/whatsapp-widget.js"></script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -59,14 +61,14 @@ export default function LocaleLayout({ children, params }: Props) {
           }}
         />
       </head>
-      <body className={`${cairo.variable} ${inter.variable} font-sans`}>
+      <body className={`${cairo.variable} ${inter.variable} font-sans overflow-x-hidden`}>
         <LanguageProvider initialLang={lang}>
           <LanguageBoundary>
             <DirLangController />
             <Header />
-            <main>{children}</main>
+            <main className="overflow-x-hidden">{children}</main>
             <Footer />
-            <WhatsAppButton />
+            <GupshupWidget />
           </LanguageBoundary>
         </LanguageProvider>
       </body>
