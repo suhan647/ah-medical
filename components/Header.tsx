@@ -17,11 +17,11 @@ const Header = () => {
   const navigation = content.header[language.code].navigation;
 
   const menuItems = [
-    { href: '/', label: navigation.home },
-    { href: '/about', label: navigation.about },
-    { href: '/services', label: navigation.services },
-    { href: '/treatments', label: navigation.treatments },
-    { href: '/contact', label: navigation.contact },
+    { href: `/${language.code}`, label: navigation.home },
+    { href: `/${language.code}/about`, label: navigation.about },
+    { href: `/${language.code}/services`, label: navigation.services },
+    { href: `/${language.code}/treatments`, label: navigation.treatments },
+    { href: `/${language.code}/contact`, label: navigation.contact },
   ];
 
   return (
@@ -29,7 +29,7 @@ const Header = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse">
+          <Link href={`/${language.code}`} className="flex items-center space-x-2 rtl:space-x-reverse">
             <div className="relative h-24 md:h-24 w-[220px] md:w-[340px]">
               <Image
                 src={language.code === 'ar' ? '/logos/ah-medical-travles-logo-ar.png' : '/logos/ah-medical-travles-logo-en.png'}
@@ -45,8 +45,8 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
             {menuItems.map((item) => {
-              const isRoot = item.href === '/';
-              const isActive = isRoot ? pathname === '/' : pathname.startsWith(item.href);
+              const isRoot = item.href === `/${language.code}`;
+              const isActive = isRoot ? pathname === `/${language.code}` : pathname.startsWith(item.href);
               const base = 'transition-colors font-medium px-2 py-1 rounded-md';
               const active = 'text-teal-700 bg-teal-50';
               const inactive = 'text-gray-700 hover:text-teal-600';
@@ -81,8 +81,8 @@ const Header = () => {
           <div className="md:hidden bg-white border-t border-gray-200">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {menuItems.map((item) => {
-                const isRoot = item.href === '/';
-                const isActive = isRoot ? pathname === '/' : pathname.startsWith(item.href);
+                const isRoot = item.href === `/${language.code}`;
+                const isActive = isRoot ? pathname === `/${language.code}` : pathname.startsWith(item.href);
                 return (
                   <Link
                     key={item.href}

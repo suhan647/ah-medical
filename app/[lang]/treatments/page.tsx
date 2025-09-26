@@ -1,23 +1,29 @@
-"use client";
-
 import Link from 'next/link';
-import { useLanguage } from '@/hooks/useLanguage';
 import { treatments } from '@/lib/content';
 import { ArrowRight, Star } from 'lucide-react';
+import WhatsAppCTA from '@/components/WhatsAppCTA';
 
-export default function Treatments() {
-  const { language } = useLanguage();
+interface Props {
+  params: { lang: string };
+}
+
+export async function generateStaticParams() {
+  return [{ lang: 'ar' }, { lang: 'en' }];
+}
+
+export default function Treatments({ params }: Props) {
+  const lang = params.lang as 'ar' | 'en';
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-teal-50 to-blue-50">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            {language.code === 'ar' ? 'العلاجات المتخصصة' : 'Specialized Treatments'}
+            {lang === 'ar' ? 'العلاجات المتخصصة' : 'Specialized Treatments'}
           </h1>
           <p className="text-xl text-gray-600">
-            {language.code === 'ar' 
+            {lang === 'ar' 
               ? 'نقدم أحدث العلاجات الطبية مع أفضل الأطباء المتخصصين في بنغالور'
               : 'We offer the latest medical treatments with Bangalore\'s best specialized doctors'
             }
@@ -40,10 +46,10 @@ export default function Treatments() {
                     {treatment.icon}
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-1">
-                    {treatment.title[language.code]}
+                    {treatment.title[lang]}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
-                    {treatment.description[language.code]}
+                    {treatment.description[lang]}
                   </p>
                   
                   {/* Rating */}
@@ -55,7 +61,7 @@ export default function Treatments() {
                   </div>
 
                   <div className="mt-auto pt-4 flex items-center justify-center space-x-2 rtl:space-x-reverse text-teal-600 font-medium">
-                    <span>{language.code === 'ar' ? 'اعرف المزيد' : 'Learn More'}</span>
+                    <span>{lang === 'ar' ? 'اعرف المزيد' : 'Learn More'}</span>
                     <ArrowRight size={16} className="rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                   </div>
                 </div>
@@ -70,7 +76,7 @@ export default function Treatments() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {language.code === 'ar' ? 'لماذا تختار علاجاتنا؟' : 'Why Choose Our Treatments?'}
+              {lang === 'ar' ? 'لماذا تختار علاجاتنا؟' : 'Why Choose Our Treatments?'}
             </h2>
           </div>
 
@@ -80,10 +86,10 @@ export default function Treatments() {
                 <span className="text-white text-2xl">🏥</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                {language.code === 'ar' ? 'أفضل المستشفيات' : 'Best Hospitals'}
+                {lang === 'ar' ? 'أفضل المستشفيات' : 'Best Hospitals'}
               </h3>
               <p className="text-gray-600">
-                {language.code === 'ar' 
+                {lang === 'ar' 
                   ? 'شراكات مع أفضل المستشفيات المعتمدة دولياً في بنغالور'
                   : 'Partnerships with internationally accredited top hospitals in Bangalore'
                 }
@@ -95,10 +101,10 @@ export default function Treatments() {
                 <span className="text-white text-2xl">👨‍⚕️</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                {language.code === 'ar' ? 'أطباء متخصصون' : 'Specialized Doctors'}
+                {lang === 'ar' ? 'أطباء متخصصون' : 'Specialized Doctors'}
               </h3>
               <p className="text-gray-600">
-                {language.code === 'ar' 
+                {lang === 'ar' 
                   ? 'أطباء ذوو خبرة عالية ومعتمدون من أفضل الجامعات العالمية'
                   : 'Highly experienced doctors certified from world\'s best universities'
                 }
@@ -110,10 +116,10 @@ export default function Treatments() {
                 <span className="text-white text-2xl">💰</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                {language.code === 'ar' ? 'أسعار تنافسية' : 'Competitive Prices'}
+                {lang === 'ar' ? 'أسعار تنافسية' : 'Competitive Prices'}
               </h3>
               <p className="text-gray-600">
-                {language.code === 'ar' 
+                {lang === 'ar' 
                   ? 'علاج عالي الجودة بأسعار تنافسية مقارنة بالدول الأخرى'
                   : 'High-quality treatment at competitive prices compared to other countries'
                 }
@@ -128,7 +134,7 @@ export default function Treatments() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {language.code === 'ar' ? 'مراحل العلاج' : 'Treatment Process'}
+              {lang === 'ar' ? 'مراحل العلاج' : 'Treatment Process'}
             </h2>
           </div>
 
@@ -140,29 +146,29 @@ export default function Treatments() {
               {[
                 {
                   step: 1,
-                  title: language.code === 'ar' ? 'التقييم الأولي' : 'Initial Assessment',
-                  description: language.code === 'ar' 
+                  title: lang === 'ar' ? 'التقييم الأولي' : 'Initial Assessment',
+                  description: lang === 'ar' 
                     ? 'تقييم شامل لحالتك الطبية وتحديد نوع العلاج المناسب'
                     : 'Comprehensive assessment of your medical condition and determining suitable treatment'
                 },
                 {
                   step: 2,
-                  title: language.code === 'ar' ? 'اختيار الطبيب' : 'Doctor Selection',
-                  description: language.code === 'ar' 
+                  title: lang === 'ar' ? 'اختيار الطبيب' : 'Doctor Selection',
+                  description: lang === 'ar' 
                     ? 'اختيار أفضل طبيب متخصص وتحديد موعد الاستشارة'
                     : 'Selecting the best specialist doctor and scheduling consultation'
                 },
                 {
                   step: 3,
-                  title: language.code === 'ar' ? 'التشخيص والفحص' : 'Diagnosis & Examination',
-                  description: language.code === 'ar' 
+                  title: lang === 'ar' ? 'التشخيص والفحص' : 'Diagnosis & Examination',
+                  description: lang === 'ar' 
                     ? 'إجراء الفحوصات اللازمة ووضع خطة العلاج المناسبة'
                     : 'Conducting necessary tests and creating appropriate treatment plan'
                 },
                 {
                   step: 4,
-                  title: language.code === 'ar' ? 'العلاج والمتابعة' : 'Treatment & Follow-up',
-                  description: language.code === 'ar' 
+                  title: lang === 'ar' ? 'العلاج والمتابعة' : 'Treatment & Follow-up',
+                  description: lang === 'ar' 
                     ? 'تنفيذ العلاج مع المتابعة المستمرة والرعاية بعد العلاج'
                     : 'Treatment execution with continuous follow-up and post-treatment care'
                 }
@@ -191,20 +197,15 @@ export default function Treatments() {
       <section className="py-20 bg-teal-600">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            {language.code === 'ar' ? 'ابدأ رحلة الشفاء' : 'Start Your Healing Journey'}
+            {lang === 'ar' ? 'ابدأ رحلة الشفاء' : 'Start Your Healing Journey'}
           </h2>
           <p className="text-xl text-teal-100 mb-8">
-            {language.code === 'ar' 
+            {lang === 'ar' 
               ? 'تواصل معنا اليوم للحصول على تقييم مجاني لحالتك وخطة علاجية مخصصة'
               : 'Contact us today for free assessment of your condition and personalized treatment plan'
             }
           </p>
-          <button
-            onClick={() => window.open('https://wa.me/7204832004', '_blank')}
-            className="bg-white text-teal-600 hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold transition-colors"
-          >
-            {language.code === 'ar' ? 'احجز استشارتك المجانية' : 'Book Free Consultation'}
-          </button>
+          <WhatsAppCTA lang={lang} />
         </div>
       </section>
     </div>

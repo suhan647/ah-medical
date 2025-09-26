@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from 'react';
-import { useLanguage } from '@/hooks/useLanguage';
 import { content } from '@/lib/content';
 import { ChevronDown, MessageCircle, HelpCircle, Phone, Clock, Shield } from 'lucide-react';
 
-const FAQ = () => {
-  const { language } = useLanguage();
-  const faqContent = content.faq[language.code];
+interface FAQProps {
+  lang: 'ar' | 'en';
+}
+
+const FAQ = ({ lang }: FAQProps) => {
+  const faqContent = content.faq[lang];
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First question open by default
 
   const toggleQuestion = (index: number) => {
@@ -21,7 +23,7 @@ const FAQ = () => {
           <div className="inline-flex items-center space-x-2 rtl:space-x-reverse bg-white px-4 py-2 rounded-full mb-6 shadow-md">
             <HelpCircle size={20} className="text-blue-600" />
             <span className="text-blue-700 font-semibold text-sm">
-              {language.code === 'ar' ? 'أسئلة شائعة' : 'Common Questions'}
+              {lang === 'ar' ? 'أسئلة شائعة' : 'Common Questions'}
             </span>
           </div>
           <h2 className="section-title text-gray-900 mb-6">
@@ -79,10 +81,10 @@ const FAQ = () => {
                   <MessageCircle size={24} className="text-blue-600" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {language.code === 'ar' ? 'لديك سؤال آخر؟' : 'Have Another Question?'}
+                  {lang === 'ar' ? 'لديك سؤال آخر؟' : 'Have Another Question?'}
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  {language.code === 'ar' 
+                  {lang === 'ar' 
                     ? 'فريقنا متاح على مدار الساعة للإجابة على جميع استفساراتك'
                     : 'Our team is available 24/7 to answer all your questions'
                   }
@@ -95,7 +97,7 @@ const FAQ = () => {
                   className="w-full whatsapp-button flex items-center justify-center space-x-2 rtl:space-x-reverse"
                 >
                   <MessageCircle size={20} />
-                  <span>{language.code === 'ar' ? 'اسأل عبر واتساب' : 'Ask on WhatsApp'}</span>
+                  <span>{lang === 'ar' ? 'اسأل عبر واتساب' : 'Ask on WhatsApp'}</span>
                 </button>
                 
                 <button
@@ -103,7 +105,7 @@ const FAQ = () => {
                   className="w-full cta-secondary flex items-center justify-center space-x-2 rtl:space-x-reverse"
                 >
                   <Phone size={20} />
-                  <span>{language.code === 'ar' ? 'اتصل بنا' : 'Call Us'}</span>
+                  <span>{lang === 'ar' ? 'اتصل بنا' : 'Call Us'}</span>
                 </button>
               </div>
             </div>
@@ -113,27 +115,27 @@ const FAQ = () => {
               <div className="flex items-center space-x-3 rtl:space-x-reverse mb-4">
                 <Clock size={24} className="text-blue-600" />
                 <h4 className="text-lg font-bold text-gray-900">
-                  {language.code === 'ar' ? 'ساعات الدعم' : 'Support Hours'}
+                  {lang === 'ar' ? 'ساعات الدعم' : 'Support Hours'}
                 </h4>
               </div>
               <div className="space-y-2 text-sm text-gray-700">
                 <div className="flex justify-between">
-                  <span>{language.code === 'ar' ? 'الأحد - الخميس' : 'Sunday - Thursday'}</span>
+                  <span>{lang === 'ar' ? 'الأحد - الخميس' : 'Sunday - Thursday'}</span>
                   <span className="font-medium">9:00 AM - 8:00 PM</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>{language.code === 'ar' ? 'الجمعة' : 'Friday'}</span>
+                  <span>{lang === 'ar' ? 'الجمعة' : 'Friday'}</span>
                   <span className="font-medium">9:00 AM - 12:00 PM</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>{language.code === 'ar' ? 'السبت' : 'Saturday'}</span>
+                  <span>{lang === 'ar' ? 'السبت' : 'Saturday'}</span>
                   <span className="font-medium">9:00 AM - 6:00 PM</span>
                 </div>
                 <div className="mt-4 pt-4 border-t border-blue-200">
                   <div className="flex items-center space-x-2 rtl:space-x-reverse text-blue-700 font-medium">
                     <Shield size={16} />
                     <span className="text-xs">
-                      {language.code === 'ar' ? 'واتساب متاح 24/7 للحالات الطارئة' : 'WhatsApp available 24/7 for emergencies'}
+                      {lang === 'ar' ? 'واتساب متاح 24/7 للحالات الطارئة' : 'WhatsApp available 24/7 for emergencies'}
                     </span>
                   </div>
                 </div>
@@ -143,7 +145,7 @@ const FAQ = () => {
             {/* Trust Indicators */}
             <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
               <h4 className="text-lg font-bold text-gray-900 mb-4 text-center">
-                {language.code === 'ar' ? 'لماذا تثق بنا؟' : 'Why Trust Us?'}
+                {lang === 'ar' ? 'لماذا تثق بنا؟' : 'Why Trust Us?'}
               </h4>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 rtl:space-x-reverse text-sm">
@@ -151,7 +153,7 @@ const FAQ = () => {
                     <Shield size={16} className="text-green-600" />
                   </div>
                   <span className="text-gray-700">
-                    {language.code === 'ar' ? '10+ سنوات خبرة' : '10+ Years Experience'}
+                    {lang === 'ar' ? '10+ سنوات خبرة' : '10+ Years Experience'}
                   </span>
                 </div>
                 <div className="flex items-center space-x-3 rtl:space-x-reverse text-sm">
@@ -159,7 +161,7 @@ const FAQ = () => {
                     <MessageCircle size={16} className="text-blue-600" />
                   </div>
                   <span className="text-gray-700">
-                    {language.code === 'ar' ? '1000+ مريض راض' : '1000+ Happy Patients'}
+                    {lang === 'ar' ? '1000+ مريض راض' : '1000+ Happy Patients'}
                   </span>
                 </div>
                 <div className="flex items-center space-x-3 rtl:space-x-reverse text-sm">
@@ -167,7 +169,7 @@ const FAQ = () => {
                     <HelpCircle size={16} className="text-yellow-600" />
                   </div>
                   <span className="text-gray-700">
-                    {language.code === 'ar' ? 'استشارة مجانية' : 'Free Consultation'}
+                    {lang === 'ar' ? 'استشارة مجانية' : 'Free Consultation'}
                   </span>
                 </div>
               </div>

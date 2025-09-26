@@ -1,12 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Cairo, Inter } from 'next/font/google';
-import { LanguageProvider } from '@/hooks/useLanguage';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
-import LanguageBoundary from '@/components/LanguageBoundary';
-import DirLangController from '@/components/DirLangController';
 import { generateMetadata as generateRootMetadata } from '@/lib/seo-metadata';
 import { generateStructuredData } from '@/lib/structured-data';
 
@@ -18,36 +12,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const structuredData = generateStructuredData('ar');
-
   return (
-    <html lang="ar" dir="rtl">
+    <html>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow" />
-        <meta name="google" content="notranslate" />
-        <meta httpEquiv="Content-Language" content="ar" />
-        <link rel="alternate" hrefLang="ar" href="https://ahmedtourisms.com/ar" />
-        <link rel="alternate" hrefLang="en" href="https://ahmedtourisms.com/en" />
-        <link rel="alternate" hrefLang="x-default" href="https://ahmedtourisms.com/ar" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
-          }}
-        />
       </head>
       <body className={`${cairo.variable} ${inter.variable} font-sans`}>
-        <LanguageProvider>
-          <LanguageBoundary>
-            <DirLangController />
-            <Header />
-            <main>{children}</main>
-            <Footer />
-            <WhatsAppButton />
-          </LanguageBoundary>
-        </LanguageProvider>
+        {children}
       </body>
     </html>
   );

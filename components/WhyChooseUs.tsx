@@ -1,13 +1,23 @@
 "use client";
 
-import { useLanguage } from '@/hooks/useLanguage';
 import { content } from '@/lib/content';
 import { useInView } from '@/hooks/useInView';
 import { CheckCircle, Award, Shield, Heart, DollarSign, Clock } from 'lucide-react';
 
-const WhyChooseUs = () => {
-  const { language } = useLanguage();
-  const whyChooseContent = content.whyChooseUs[language.code];
+interface WhyChooseUsProps {
+  lang: 'ar' | 'en';
+}
+
+const WhyChooseUs = ({ lang }: WhyChooseUsProps) => {
+  // Ensure lang is valid, fallback to 'ar' if not
+  const validLang = (lang === 'ar' || lang === 'en') ? lang : 'ar';
+  const whyChooseContent = content.whyChooseUs[validLang];
+  
+  // Safety check
+  if (!whyChooseContent) {
+    console.error('WhyChooseUs content not found for validLanguage:', validLang);
+    return <div>Error: Content not found for validLanguage {validLang}</div>;
+  }
   const section = useInView<HTMLDivElement>();
 
   const iconMap = {
@@ -26,7 +36,7 @@ const WhyChooseUs = () => {
           <div className="inline-flex items-center space-x-2 rtl:space-x-reverse bg-blue-50 px-4 py-2 rounded-full mb-6">
             <Award size={20} className="text-blue-600" />
             <span className="text-blue-700 font-semibold text-sm">
-              {language.code === 'ar' ? 'لماذا نحن الأفضل' : 'Why We\'re The Best'}
+              {validLang === 'ar' ? 'لماذا نحن الأفضل' : 'Why We\'re The Best'}
             </span>
           </div>
           <h2 className="section-title text-gray-900 mb-6">
@@ -59,7 +69,7 @@ const WhyChooseUs = () => {
                 <div className="mt-4 pt-4 border-t border-gray-100">
                   <div className="flex items-center justify-center space-x-2 rtl:space-x-reverse text-sm text-blue-600 font-medium">
                     <CheckCircle size={16} />
-                    <span>{language.code === 'ar' ? 'معتمد دولياً' : 'Internationally Certified'}</span>
+                    <span>{validLang === 'ar' ? 'معتمد دولياً' : 'Internationally Certified'}</span>
                   </div>
                 </div>
               )}
@@ -68,7 +78,7 @@ const WhyChooseUs = () => {
                 <div className="mt-4 pt-4 border-t border-gray-100">
                   <div className="text-2xl font-bold text-green-600 mb-1">70%</div>
                   <div className="text-sm text-gray-600">
-                    {language.code === 'ar' ? 'توفير في التكاليف' : 'Cost Savings'}
+                    {validLang === 'ar' ? 'توفير في التكاليف' : 'Cost Savings'}
                   </div>
                 </div>
               )}
@@ -80,10 +90,10 @@ const WhyChooseUs = () => {
         <div className="text-center mt-16">
           <div className="bg-gradient-to-r from-blue-50 to-teal-50 rounded-3xl p-8 md:p-12 shadow-lg">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              {language.code === 'ar' ? 'جاهز لبدء رحلتك العلاجية؟' : 'Ready to Start Your Medical Journey?'}
+              {validLang === 'ar' ? 'جاهز لبدء رحلتك العلاجية؟' : 'Ready to Start Your Medical Journey?'}
             </h3>
             <p className="body-large text-gray-600 mb-8 max-w-2xl mx-auto">
-              {language.code === 'ar' 
+              {validLang === 'ar' 
                 ? 'انضم إلى أكثر من 1000 مريض راض واحصل على أفضل رعاية طبية في بنغالور'
                 : 'Join over 1000 satisfied patients and get the best medical care in Bangalore'
               }
@@ -93,13 +103,13 @@ const WhyChooseUs = () => {
                 onClick={() => window.open('https://wa.me/7204832004', '_blank')}
                 className="cta-primary"
               >
-                {language.code === 'ar' ? 'تواصل معنا الآن' : 'Contact Us Now'}
+                {validLang === 'ar' ? 'تواصل معنا الآن' : 'Contact Us Now'}
               </button>
               <button
                 onClick={() => window.open('https://wa.me/7204832004', '_blank')}
                 className="cta-secondary"
               >
-                {language.code === 'ar' ? 'احصل على عرض سعر' : 'Get Free Quote'}
+                {validLang === 'ar' ? 'احصل على عرض سعر' : 'Get Free Quote'}
               </button>
             </div>
           </div>

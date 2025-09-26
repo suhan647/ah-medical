@@ -3,15 +3,25 @@
 import Link from 'next/link';
 import { ArrowRight, Play, Shield, Award, Users, Clock, CircleCheck as CheckCircle, Star } from 'lucide-react';
 import Image from 'next/image';
-import { useLanguage } from '@/hooks/useLanguage';
 import { content } from '@/lib/content';
 
-const Hero = () => {
-  const { language } = useLanguage();
-  const heroContent = content.hero[language.code];
+interface HeroProps {
+  lang: 'ar' | 'en';
+}
+
+const Hero = ({ lang }: HeroProps) => {
+  // Ensure lang is valid, fallback to 'ar' if not
+  const validLang = (lang === 'ar' || lang === 'en') ? lang : 'ar';
+  const heroContent = content.hero[validLang];
+  
+  // Safety check
+  if (!heroContent) {
+    console.error('Hero content not found for language:', validLang);
+    return <div>Error: Content not found for language {validLang}</div>;
+  }
 
   return (
-    <section className="relative medical-gradient min-h-screen flex items-center pt-16 overflow-hidden">
+    <section className="relative medical-gradient min-h-screen flex items-center overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -19,20 +29,22 @@ const Hero = () => {
         }} />
       </div>
 
-      <div className="max-w-7xl mx-auto container-padding py-12 md:py-20 relative z-10">
+      <div className="max-w-7xl mx-auto container-padding py-12 md:py-20 relative z-10 overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Content */}
           <div className="space-y-6 md:space-y-8 animate-fade-in-left">
             <div className="space-y-6">
               {/* Trust Badge */}
-              <div className="inline-flex items-center space-x-3 rtl:space-x-reverse bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-blue-100">
-                <Shield size={20} className="text-blue-600" />
-                <span className="text-sm font-semibold text-blue-700">
-                  {language.code === 'ar' ? 'معتمد من JCI و NABH' : 'JCI & NABH Accredited'}
-                </span>
+              <div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3 rtl:space-x-reverse bg-white/95 backdrop-blur-sm px-4 py-3 sm:px-6 rounded-full shadow-lg border border-blue-100">
+                <div className="flex items-center space-x-2">
+                  <Shield size={16} className="text-blue-600 sm:w-5 sm:h-5" />
+                  <span className="text-xs sm:text-sm font-semibold text-blue-700">
+                    {validLang === 'ar' ? 'معتمد من JCI و NABH' : 'JCI & NABH Accredited'}
+                  </span>
+                </div>
                 <div className="flex items-center space-x-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={14} className="text-yellow-400 fill-current" />
+                    <Star key={i} size={12} className="text-yellow-400 fill-current sm:w-3.5 sm:h-3.5" />
                   ))}
                   <span className="text-xs text-gray-600 ml-1">4.9/5</span>
                 </div>
@@ -53,25 +65,25 @@ const Hero = () => {
                 <div className="flex items-center space-x-3 rtl:space-x-reverse">
                   <CheckCircle size={20} className="text-green-500 flex-shrink-0" />
                   <span className="text-gray-700 font-medium">
-                    {language.code === 'ar' ? 'وفر حتى 70%' : 'Save up to 70%'}
+                    {validLang === 'ar' ? 'وفر حتى 70%' : 'Save up to 70%'}
                   </span>
                 </div>
                 <div className="flex items-center space-x-3 rtl:space-x-reverse">
                   <CheckCircle size={20} className="text-green-500 flex-shrink-0" />
                   <span className="text-gray-700 font-medium">
-                    {language.code === 'ar' ? 'مترجم طبي مختص' : 'Medical Translator'}
+                    {validLang === 'ar' ? 'مترجم طبي مختص' : 'Medical Translator'}
                   </span>
                 </div>
                 <div className="flex items-center space-x-3 rtl:space-x-reverse">
                   <CheckCircle size={20} className="text-green-500 flex-shrink-0" />
                   <span className="text-gray-700 font-medium">
-                    {language.code === 'ar' ? 'استشارة مجانية' : 'Free Consultation'}
+                    {validLang === 'ar' ? 'استشارة مجانية' : 'Free Consultation'}
                   </span>
                 </div>
                 <div className="flex items-center space-x-3 rtl:space-x-reverse">
                   <CheckCircle size={20} className="text-green-500 flex-shrink-0" />
                   <span className="text-gray-700 font-medium">
-                    {language.code === 'ar' ? 'دعم 24/7' : '24/7 Support'}
+                    {validLang === 'ar' ? 'دعم 24/7' : '24/7 Support'}
                   </span>
                 </div>
               </div>
@@ -99,38 +111,38 @@ const Hero = () => {
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-blue-700 mb-1">10+</div>
                 <div className="text-sm text-gray-600">
-                  {language.code === 'ar' ? 'سنوات خبرة' : 'Years Experience'}
+                  {validLang === 'ar' ? 'سنوات خبرة' : 'Years Experience'}
                 </div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-blue-700 mb-1">1000+</div>
                 <div className="text-sm text-gray-600">
-                  {language.code === 'ar' ? 'مريض راض' : 'Happy Patients'}
+                  {validLang === 'ar' ? 'مريض راض' : 'Happy Patients'}
                 </div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-blue-700 mb-1">15+</div>
                 <div className="text-sm text-gray-600">
-                  {language.code === 'ar' ? 'مستشفى شريك' : 'Partner Hospitals'}
+                  {validLang === 'ar' ? 'مستشفى شريك' : 'Partner Hospitals'}
                 </div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-blue-700 mb-1">98%</div>
                 <div className="text-sm text-gray-600">
-                  {language.code === 'ar' ? 'نسبة نجاح' : 'Success Rate'}
+                  {validLang === 'ar' ? 'نسبة نجاح' : 'Success Rate'}
                 </div>
               </div>
             </div>
           </div>
 
           {/* Hero Image */}
-          <div className="relative animate-fade-in-right">
+          <div className="relative animate-fade-in-right overflow-hidden">
             <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden medical-shadow">
               <div className="aspect-[4/3] relative">
                 <Image
                   // src="https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg"
                   src="/images/hero-image.jpeg"
-                  alt={language.code === 'ar' ? 'آه للسياحة الطبية - أفضل خدمات العلاج الطبي في بنغالور مع مترجم عربي متخصص، زراعة الأسنان، علاج البروستاتا، جراحة القلب، علاج السرطان' : 'AH Medical Tourism - Best medical treatment services in Bangalore with specialized Arabic translator, dental implants, prostate treatment, cardiac surgery, cancer treatment'}
+                  alt={validLang === 'ar' ? 'آه للسياحة الطبية - أفضل خدمات العلاج الطبي في بنغالور مع مترجم عربي متخصص، زراعة الأسنان، علاج البروستاتا، جراحة القلب، علاج السرطان' : 'AH Medical Tourism - Best medical treatment services in Bangalore with specialized Arabic translator, dental implants, prostate treatment, cardiac surgery, cancer treatment'}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -139,23 +151,23 @@ const Hero = () => {
                 
                 {/* Overlay with CTA */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-lg font-bold text-gray-900 mb-1">
-                          {language.code === 'ar' ? 'استشارة مجانية' : 'Free Consultation'}
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-xl">
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+                      <div className="text-center sm:text-left">
+                        <div className="text-base sm:text-lg font-bold text-gray-900 mb-1">
+                          {validLang === 'ar' ? 'استشارة مجانية' : 'Free Consultation'}
                         </div>
-                        <div className="text-sm text-gray-600 flex items-center space-x-2 rtl:space-x-reverse">
-                          <Clock size={16} />
-                          <span>{language.code === 'ar' ? 'متاح الآن' : 'Available Now'}</span>
+                        <div className="text-xs sm:text-sm text-gray-600 flex items-center justify-center sm:justify-start space-x-2 rtl:space-x-reverse">
+                          <Clock size={14} />
+                          <span>{validLang === 'ar' ? 'متاح الآن' : 'Available Now'}</span>
                         </div>
                       </div>
                       <button
                         onClick={() => window.open('https://wa.me/7204832004', '_blank')}
-                        className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-sm sm:text-base"
                       >
-                        {language.code === 'ar' ? 'واتساب' : 'WhatsApp'}
+                        {validLang === 'ar' ? 'واتساب' : 'WhatsApp'}
                       </button>
                     </div>
                   </div>
@@ -163,17 +175,17 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Floating Trust Badges */}
-            <div className="absolute -top-6 -right-6 bg-gradient-to-r from-blue-600 to-teal-600 text-white p-4 rounded-2xl shadow-xl">
-              <Award size={28} />
+            {/* Floating Trust Badges - Responsive positioning */}
+            <div className="absolute top-2 right-2 sm:-top-6 sm:-right-6 bg-gradient-to-r from-blue-600 to-teal-600 text-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-xl">
+              <Award size={20} className="sm:w-7 sm:h-7" />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-green-500 to-teal-500 text-white p-4 rounded-2xl shadow-xl">
-              <Users size={28} />
+            <div className="absolute bottom-2 left-2 sm:-bottom-6 sm:-left-6 bg-gradient-to-r from-green-500 to-teal-500 text-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-xl">
+              <Users size={20} className="sm:w-7 sm:h-7" />
             </div>
             
-            {/* Certification Badge */}
-            <div className="absolute top-6 left-6 certification-badge">
-              <Shield size={16} className="mr-2" />
+            {/* Certification Badge - Responsive positioning */}
+            <div className="absolute top-2 left-2 sm:top-6 sm:left-6 certification-badge">
+              <Shield size={12} className="sm:w-4 sm:h-4 mr-1 sm:mr-2" />
               <span className="text-xs font-bold">JCI</span>
             </div>
           </div>

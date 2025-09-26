@@ -50,10 +50,10 @@ const Footer = () => {
               {language.code === 'ar' ? 'روابط سريعة' : 'Quick Links'}
             </h3>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-gray-300 hover:text-teal-400 transition-colors">{navigation.home}</Link></li>
-              <li><Link href="/about" className="text-gray-300 hover:text-teal-400 transition-colors">{navigation.about}</Link></li>
-              <li><Link href="/services" className="text-gray-300 hover:text-teal-400 transition-colors">{navigation.services}</Link></li>
-              <li><Link href="/treatments" className="text-gray-300 hover:text-teal-400 transition-colors">{navigation.treatments}</Link></li>
+              <li><Link href={`/${language.code}`} className="text-gray-300 hover:text-teal-400 transition-colors">{navigation.home}</Link></li>
+              <li><Link href={`/${language.code}/about`} className="text-gray-300 hover:text-teal-400 transition-colors">{navigation.about}</Link></li>
+              <li><Link href={`/${language.code}/services`} className="text-gray-300 hover:text-teal-400 transition-colors">{navigation.services}</Link></li>
+              <li><Link href={`/${language.code}/treatments`} className="text-gray-300 hover:text-teal-400 transition-colors">{navigation.treatments}</Link></li>
             </ul>
           </div>
 

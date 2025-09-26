@@ -1,13 +1,15 @@
 "use client";
 
-import { useLanguage } from '@/hooks/useLanguage';
 import { content } from '@/lib/content';
 import { Award, MapPin, Users, Shield, Star, CircleCheck as CheckCircle, GraduationCap } from 'lucide-react';
 import Image from 'next/image';
 
-const Partners = () => {
-  const { language } = useLanguage();
-  const partnersContent = content.partners[language.code];
+interface PartnersProps {
+  lang: 'ar' | 'en';
+}
+
+const Partners = ({ lang }: PartnersProps) => {
+  const partnersContent = content.partners[lang];
 
   return (
     <section className="section-padding bg-white">
@@ -16,7 +18,7 @@ const Partners = () => {
           <div className="inline-flex items-center space-x-2 rtl:space-x-reverse bg-blue-50 px-4 py-2 rounded-full mb-6">
             <Shield size={20} className="text-blue-600" />
             <span className="text-blue-700 font-semibold text-sm">
-              {language.code === 'ar' ? 'شركاء معتمدون' : 'Certified Partners'}
+              {lang === 'ar' ? 'شركاء معتمدون' : 'Certified Partners'}
             </span>
           </div>
           <h2 className="section-title text-gray-900 mb-6">
@@ -34,7 +36,7 @@ const Partners = () => {
               <Shield size={24} className="text-blue-600" />
             </div>
             <h3 className="subsection-title text-gray-900">
-              {language.code === 'ar' ? 'المستشفيات الشريكة' : 'Partner Hospitals'}
+              {lang === 'ar' ? 'المستشفيات الشريكة' : 'Partner Hospitals'}
             </h3>
           </div>
           
@@ -47,7 +49,7 @@ const Partners = () => {
                 <div className="relative h-56">
                   <Image
                     src={hospital.image}
-                    alt={language.code === 'ar' ? `${hospital.name} - مستشفى معتمد من JCI في بنغالور للسياحة الطبية` : `${hospital.name} - JCI Accredited Hospital in Bangalore for Medical Tourism`}
+                    alt={lang === 'ar' ? `${hospital.name} - مستشفى معتمد من JCI في بنغالور للسياحة الطبية` : `${hospital.name} - JCI Accredited Hospital in Bangalore for Medical Tourism`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -92,15 +94,15 @@ const Partners = () => {
                   <div className="space-y-3 mb-6">
                     <div className="flex items-center space-x-2 rtl:space-x-reverse text-sm text-gray-600">
                       <CheckCircle size={16} className="text-green-500" />
-                      <span>{language.code === 'ar' ? 'معتمد دولياً' : 'Internationally Accredited'}</span>
+                      <span>{lang === 'ar' ? 'معتمد دولياً' : 'Internationally Accredited'}</span>
                     </div>
                     <div className="flex items-center space-x-2 rtl:space-x-reverse text-sm text-gray-600">
                       <Users size={16} className="text-blue-500" />
-                      <span>{language.code === 'ar' ? 'أطباء متخصصون' : 'Specialist Doctors'}</span>
+                      <span>{lang === 'ar' ? 'أطباء متخصصون' : 'Specialist Doctors'}</span>
                     </div>
                     <div className="flex items-center space-x-2 rtl:space-x-reverse text-sm text-gray-600">
                       <Shield size={16} className="text-purple-500" />
-                      <span>{language.code === 'ar' ? 'أحدث التقنيات' : 'Latest Technology'}</span>
+                      <span>{lang === 'ar' ? 'أحدث التقنيات' : 'Latest Technology'}</span>
                     </div>
                   </div>
                   
@@ -108,7 +110,7 @@ const Partners = () => {
                     onClick={() => window.open('https://wa.me/7204832004', '_blank')}
                     className="mt-auto cta-primary w-full"
                   >
-                    {language.code === 'ar' ? 'استفسر الآن' : 'Enquire Now'}
+                    {lang === 'ar' ? 'استفسر الآن' : 'Enquire Now'}
                   </button>
                 </div>
               </div>
@@ -123,7 +125,7 @@ const Partners = () => {
               <GraduationCap size={24} className="text-teal-600" />
             </div>
             <h3 className="subsection-title text-gray-900">
-              {language.code === 'ar' ? 'الأطباء المتخصصون' : 'Specialist Doctors'}
+              {lang === 'ar' ? 'الأطباء المتخصصون' : 'Specialist Doctors'}
             </h3>
           </div>
           
@@ -136,7 +138,7 @@ const Partners = () => {
                 <div className="relative w-24 h-24 rounded-2xl overflow-hidden ring-4 ring-blue-100 flex-shrink-0">
                   <Image
                     src={doctor.image}
-                    alt={language.code === 'ar' ? `${doctor.name} - ${doctor.specialty} في بنغالور` : `${doctor.name} - ${doctor.specialty} in Bangalore`}
+                    alt={lang === 'ar' ? `${doctor.name} - ${doctor.specialty} في بنغالور` : `${doctor.name} - ${doctor.specialty} in Bangalore`}
                     fill
                     sizes="96px"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -174,10 +176,10 @@ const Partners = () => {
           <div className="bg-gradient-to-r from-blue-50 via-white to-teal-50 rounded-3xl p-8 md:p-12 shadow-xl border border-blue-100">
             <div className="max-w-4xl mx-auto">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                {language.code === 'ar' ? 'احجز مع أفضل الأطباء' : 'Book with Top Doctors'}
+                {lang === 'ar' ? 'احجز مع أفضل الأطباء' : 'Book with Top Doctors'}
               </h3>
               <p className="body-large text-gray-600 mb-8">
-                {language.code === 'ar' 
+                {lang === 'ar' 
                   ? 'تواصل معنا لحجز موعد مع أفضل الأطباء المتخصصين في مستشفيات معتمدة دولياً. استشارة مجانية وتقييم شامل لحالتك'
                   : 'Contact us to book appointment with top specialist doctors in internationally accredited hospitals. Free consultation and comprehensive assessment of your condition'
                 }
@@ -189,7 +191,7 @@ const Partners = () => {
                     <CheckCircle size={24} className="text-blue-600" />
                   </div>
                   <div className="font-semibold text-gray-900">
-                    {language.code === 'ar' ? 'استشارة مجانية' : 'Free Consultation'}
+                    {lang === 'ar' ? 'استشارة مجانية' : 'Free Consultation'}
                   </div>
                 </div>
                 <div className="text-center">
@@ -197,7 +199,7 @@ const Partners = () => {
                     <Shield size={24} className="text-green-600" />
                   </div>
                   <div className="font-semibold text-gray-900">
-                    {language.code === 'ar' ? 'أطباء معتمدون' : 'Certified Doctors'}
+                    {lang === 'ar' ? 'أطباء معتمدون' : 'Certified Doctors'}
                   </div>
                 </div>
                 <div className="text-center">
@@ -205,7 +207,7 @@ const Partners = () => {
                     <Award size={24} className="text-teal-600" />
                   </div>
                   <div className="font-semibold text-gray-900">
-                    {language.code === 'ar' ? 'مستشفيات JCI' : 'JCI Hospitals'}
+                    {lang === 'ar' ? 'مستشفيات JCI' : 'JCI Hospitals'}
                   </div>
                 </div>
               </div>
@@ -215,13 +217,13 @@ const Partners = () => {
                   onClick={() => window.open('https://wa.me/7204832004', '_blank')}
                   className="cta-primary"
                 >
-                  {language.code === 'ar' ? 'احجز موعدك الآن' : 'Book Your Appointment'}
+                  {lang === 'ar' ? 'احجز موعدك الآن' : 'Book Your Appointment'}
                 </button>
                 <button
                   onClick={() => window.open('https://wa.me/7204832004', '_blank')}
                   className="whatsapp-button"
                 >
-                  {language.code === 'ar' ? 'تواصل عبر واتساب' : 'Contact on WhatsApp'}
+                  {lang === 'ar' ? 'تواصل عبر واتساب' : 'Contact on WhatsApp'}
                 </button>
               </div>
             </div>

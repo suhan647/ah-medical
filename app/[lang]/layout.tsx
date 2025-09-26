@@ -60,7 +60,7 @@ export default function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body className={`${cairo.variable} ${inter.variable} font-sans`}>
-        <LanguageProvider>
+        <LanguageProvider initialLang={lang}>
           <LanguageBoundary>
             <DirLangController />
             <Header />

@@ -1,21 +1,25 @@
-"use client";
-
-import { useLanguage } from '@/hooks/useLanguage';
 import Image from 'next/image';
-import { useInView } from '@/hooks/useInView';
 import { content } from '@/lib/content';
 import { Award, Users, Globe, Clock } from 'lucide-react';
+import WhatsAppCTA from '@/components/WhatsAppCTA';
 
-export default function About() {
-  const { language } = useLanguage();
-  const aboutContent = content.about[language.code];
-  const hero = useInView<HTMLDivElement>();
+interface Props {
+  params: { lang: string };
+}
+
+export async function generateStaticParams() {
+  return [{ lang: 'ar' }, { lang: 'en' }];
+}
+
+export default function About({ params }: Props) {
+  const lang = params.lang as 'ar' | 'en';
+  const aboutContent = content.about[lang];
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-teal-50 to-blue-50">
-        <div ref={hero.ref} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-700 ${hero.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -41,7 +45,7 @@ export default function About() {
               <div className="relative w-full h-[360px] md:h-[460px]">
                 <Image
                   src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg"
-                  alt={language.code === 'ar' ? 'عبد القدوس - منسق طبي متخصص' : 'Abdul Quddus - Medical Coordinator'}
+                  alt={lang === 'ar' ? 'عبد القدوس - منسق طبي متخصص' : 'Abdul Quddus - Medical Coordinator'}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover rounded-2xl shadow-2xl"
@@ -64,10 +68,10 @@ export default function About() {
           {/* Company Overview */}
           <div className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {language.code === 'ar' ? 'عن الشركة' : 'About the Company'}
+              {lang === 'ar' ? 'عن الشركة' : 'About the Company'}
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
-              {language.code === 'ar'
+              {lang === 'ar'
                 ? 'آه للسياحة الطبية هي شركة متخصصة في تنسيق رحلات العلاج في بنغالور، الهند. نقدم حلولاً شاملة تشمل تقييم التقارير الطبية، اختيار المستشفى والطبيب المناسب، التأشيرة، الاستقبال في المطار، الإقامة، الترجمة الطبية، والمتابعة بعد العلاج. هدفنا هو تقديم تجربة علاجية آمنة ومريحة بمعايير جودة عالمية.'
                 : 'AH Medical Tourism specializes in coordinating medical journeys in Bangalore, India. We provide end-to-end solutions including report assessment, selecting the right hospital and doctor, visa assistance, airport pickup, accommodation, medical translation, and post-treatment follow-up. Our goal is a safe, comfortable experience with global quality standards.'}
             </p>
@@ -75,7 +79,7 @@ export default function About() {
 
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {language.code === 'ar' ? 'تخصصاتنا' : 'Our Specialties'}
+              {lang === 'ar' ? 'تخصصاتنا' : 'Our Specialties'}
             </h2>
           </div>
 
@@ -102,7 +106,7 @@ export default function About() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {language.code === 'ar' ? 'رحلتنا' : 'Our Journey'}
+              {lang === 'ar' ? 'رحلتنا' : 'Our Journey'}
             </h2>
           </div>
 
@@ -113,10 +117,10 @@ export default function About() {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {language.code === 'ar' ? 'بداية الرحلة - 2014' : 'Journey Begins - 2014'}
+                  {lang === 'ar' ? 'بداية الرحلة - 2014' : 'Journey Begins - 2014'}
                 </h3>
                 <p className="text-gray-600">
-                  {language.code === 'ar' 
+                  {lang === 'ar' 
                     ? 'بدأت رحلتنا في مساعدة المرضى العرب للحصول على أفضل علاج طبي في بنغالور'
                     : 'Started our journey helping Arabic patients get the best medical treatment in Bangalore'
                   }
@@ -130,10 +134,10 @@ export default function About() {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {language.code === 'ar' ? 'توسع الخدمات - 2018' : 'Service Expansion - 2018'}
+                  {lang === 'ar' ? 'توسع الخدمات - 2018' : 'Service Expansion - 2018'}
                 </h3>
                 <p className="text-gray-600">
-                  {language.code === 'ar' 
+                  {lang === 'ar' 
                     ? 'إضافة خدمات السياحة والإقامة والنقل لتقديم تجربة شاملة'
                     : 'Added tourism, accommodation and transport services for comprehensive experience'
                   }
@@ -147,10 +151,10 @@ export default function About() {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {language.code === 'ar' ? 'النجاح المستمر - اليوم' : 'Continued Success - Today'}
+                  {lang === 'ar' ? 'النجاح المستمر - اليوم' : 'Continued Success - Today'}
                 </h3>
                 <p className="text-gray-600">
-                  {language.code === 'ar' 
+                  {lang === 'ar' 
                     ? 'أكثر من 1000 مريض راض وشراكات مع أفضل المستشفيات في بنغالور'
                     : 'Over 1000 satisfied patients and partnerships with Bangalore\'s top hospitals'
                   }
@@ -165,20 +169,15 @@ export default function About() {
       <section className="py-20 bg-teal-600">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            {language.code === 'ar' ? 'جاهزون لمساعدتك' : 'Ready to Help You'}
+            {lang === 'ar' ? 'جاهزون لمساعدتك' : 'Ready to Help You'}
           </h2>
           <p className="text-xl text-teal-100 mb-8">
-            {language.code === 'ar' 
+            {lang === 'ar' 
               ? 'تواصل معنا اليوم لبدء رحلتك العلاجية مع خبرة أكثر من 10 سنوات'
               : 'Contact us today to start your medical journey with over 10 years of experience'
             }
           </p>
-          <button 
-            onClick={() => window.open('https://wa.me/7204832004', '_blank')}
-            className="bg-white text-teal-600 hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold transition-colors"
-          >
-            {language.code === 'ar' ? 'تواصل معنا الآن' : 'Contact Us Now'}
-          </button>
+          <WhatsAppCTA lang={lang} />
         </div>
       </section>
     </div>

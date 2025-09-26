@@ -20,20 +20,37 @@ export const useLanguage = () => {
   return context;
 };
 
-export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
+export const LanguageProvider = ({ children, initialLang }: { children: React.ReactNode; initialLang?: 'ar' | 'en' }) => {
   const [language, setLanguageState] = useState<Language>(defaultLanguage);
 
   useEffect(() => {
+    // Use initialLang from URL if provided, otherwise check localStorage
     const stored = typeof window !== 'undefined' ? localStorage.getItem('language') : null;
-    // Default to Arabic unless the user explicitly saved 'en'
-    const initial = stored === 'en' ? languages.find(l => l.code === 'en')! : defaultLanguage;
+    let initial: Language;
+    
+    if (initialLang) {
+      // Use language from URL
+      initial = languages.find(l => l.code === initialLang) || defaultLanguage;
+    } else {
+      // For first-time visitors (no stored preference), default to Arabic
+      // Only use English if user has explicitly saved it
+      initial = stored === 'en' ? languages.find(l => l.code === 'en')! : defaultLanguage;
+    }
+    
     setLanguageState(initial);
-    if (!stored) {
+    
+    // Update localStorage to match URL language
+    if (initialLang && typeof window !== 'undefined') {
       try {
-        localStorage.setItem('language', initial.code);
+        localStorage.setItem('language', initialLang);
+      } catch {}
+    } else if (!stored && typeof window !== 'undefined') {
+      // For first-time visitors, set Arabic as default
+      try {
+        localStorage.setItem('language', defaultLanguage.code);
       } catch {}
     }
-  }, []);
+  }, [initialLang]);
 
   // We intentionally avoid touching documentElement here to prevent
   // interfering with React DOM commits. A top-level wrapper sets dir/lang.

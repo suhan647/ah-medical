@@ -1,14 +1,16 @@
 "use client";
 
-import { useLanguage } from '@/hooks/useLanguage';
 import { content } from '@/lib/content';
 import { Star, CircleCheck as CheckCircle, Play, Quote, MapPin, Calendar } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
-const Testimonials = () => {
-  const { language } = useLanguage();
-  const testimonialsContent = content.testimonials[language.code];
+interface TestimonialsProps {
+  lang: 'ar' | 'en';
+}
+
+const Testimonials = ({ lang }: TestimonialsProps) => {
+  const testimonialsContent = content.testimonials[lang];
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   return (
@@ -18,7 +20,7 @@ const Testimonials = () => {
           <div className="inline-flex items-center space-x-2 rtl:space-x-reverse bg-white px-4 py-2 rounded-full mb-6 shadow-md">
             <Star size={20} className="text-yellow-500" />
             <span className="text-gray-700 font-semibold text-sm">
-              {language.code === 'ar' ? 'تقييم 4.9/5' : '4.9/5 Rating'}
+              {lang === 'ar' ? 'تقييم 4.9/5' : '4.9/5 Rating'}
             </span>
           </div>
           <h2 className="section-title text-gray-900 mb-6">
@@ -45,7 +47,7 @@ const Testimonials = () => {
                 <div className="relative w-16 h-16 rounded-full overflow-hidden ring-4 ring-blue-100">
                   <Image
                     src={review.image}
-                    alt={language.code === 'ar' ? `${review.name} - مريض السياحة الطبية راض` : `${review.name} - Satisfied Medical Tourism Patient`}
+                    alt={lang === 'ar' ? `${review.name} - مريض السياحة الطبية راض` : `${review.name} - Satisfied Medical Tourism Patient`}
                     fill
                     sizes="64px"
                     className="object-cover"
@@ -89,14 +91,14 @@ const Testimonials = () => {
               <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                 <div className="flex items-center space-x-2 rtl:space-x-reverse text-sm text-gray-500">
                   <Calendar size={14} />
-                  <span>{language.code === 'ar' ? 'مراجعة موثقة' : 'Verified Review'}</span>
+                  <span>{lang === 'ar' ? 'مراجعة موثقة' : 'Verified Review'}</span>
                 </div>
                 <button
                   onClick={() => setActiveVideo(activeVideo === review.name ? null : review.name)}
                   className="flex items-center space-x-2 rtl:space-x-reverse text-blue-600 hover:text-blue-700 text-sm font-semibold transition-colors group-hover:scale-105"
                 >
                   <Play size={16} />
-                  <span>{language.code === 'ar' ? 'شاهد الفيديو' : 'Watch Video'}</span>
+                  <span>{lang === 'ar' ? 'شاهد الفيديو' : 'Watch Video'}</span>
                 </button>
               </div>
             </div>
@@ -109,25 +111,25 @@ const Testimonials = () => {
             <div>
               <div className="text-4xl font-bold text-blue-600 mb-2">1000+</div>
               <div className="text-gray-600 font-medium">
-                {language.code === 'ar' ? 'مريض راض' : 'Happy Patients'}
+                {lang === 'ar' ? 'مريض راض' : 'Happy Patients'}
               </div>
             </div>
             <div>
               <div className="text-4xl font-bold text-green-600 mb-2">98%</div>
               <div className="text-gray-600 font-medium">
-                {language.code === 'ar' ? 'نسبة نجاح' : 'Success Rate'}
+                {lang === 'ar' ? 'نسبة نجاح' : 'Success Rate'}
               </div>
             </div>
             <div>
               <div className="text-4xl font-bold text-teal-600 mb-2">4.9</div>
               <div className="text-gray-600 font-medium">
-                {language.code === 'ar' ? 'تقييم المرضى' : 'Patient Rating'}
+                {lang === 'ar' ? 'تقييم المرضى' : 'Patient Rating'}
               </div>
             </div>
             <div>
               <div className="text-4xl font-bold text-orange-600 mb-2">24/7</div>
               <div className="text-gray-600 font-medium">
-                {language.code === 'ar' ? 'دعم متواصل' : 'Support Available'}
+                {lang === 'ar' ? 'دعم متواصل' : 'Support Available'}
               </div>
             </div>
           </div>
@@ -137,10 +139,10 @@ const Testimonials = () => {
         <div className="text-center mt-16">
           <div className="bg-gradient-to-r from-blue-600 to-teal-600 rounded-3xl p-8 md:p-12 text-white shadow-2xl">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              {language.code === 'ar' ? 'شارك تجربتك معنا' : 'Share Your Success Story'}
+              {lang === 'ar' ? 'شارك تجربتك معنا' : 'Share Your Success Story'}
             </h3>
             <p className="body-large mb-8 opacity-90 max-w-2xl mx-auto">
-              {language.code === 'ar' 
+              {lang === 'ar' 
                 ? 'ساعد الآخرين من خلال مشاركة قصة نجاحك واحصل على خصم خاص على علاجك القادم'
                 : 'Help others by sharing your success story and get a special discount on your next treatment'
               }
@@ -150,13 +152,13 @@ const Testimonials = () => {
                 onClick={() => window.open('https://wa.me/7204832004', '_blank')}
                 className="bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                {language.code === 'ar' ? 'شارك قصتك' : 'Share Your Story'}
+                {lang === 'ar' ? 'شارك قصتك' : 'Share Your Story'}
               </button>
               <button
                 onClick={() => window.open('https://wa.me/7204832004', '_blank')}
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-1"
               >
-                {language.code === 'ar' ? 'احجز استشارة' : 'Book Consultation'}
+                {lang === 'ar' ? 'احجز استشارة' : 'Book Consultation'}
               </button>
             </div>
           </div>
