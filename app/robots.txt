@@ -10,8 +10,10 @@ Allow: /en/
 Allow: /en/*
 
 # Treatment pages
-Allow: /treatments/
-Allow: /treatments/*
+Allow: /ar/treatments/
+Allow: /ar/treatments/*
+Allow: /en/treatments/
+Allow: /en/treatments/*
 
 # Sitemap
 Sitemap: https://ahmedtourisms.com/sitemap.xml

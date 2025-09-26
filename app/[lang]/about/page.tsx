@@ -41,7 +41,7 @@ export default function About() {
               <div className="relative w-full h-[360px] md:h-[460px]">
                 <Image
                   src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg"
-                  alt="Abdul Quddus - Medical Coordinator"
+                  alt={language.code === 'ar' ? 'عبد القدوس - منسق طبي متخصص' : 'Abdul Quddus - Medical Coordinator'}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover rounded-2xl shadow-2xl"

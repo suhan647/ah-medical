@@ -45,7 +45,7 @@ const Testimonials = () => {
                 <div className="relative w-16 h-16 rounded-full overflow-hidden ring-4 ring-blue-100">
                   <Image
                     src={review.image}
-                    alt={`${review.name} - Medical Tourism Patient`}
+                    alt={language.code === 'ar' ? `${review.name} - مريض السياحة الطبية راض` : `${review.name} - Satisfied Medical Tourism Patient`}
                     fill
                     sizes="64px"
                     className="object-cover"

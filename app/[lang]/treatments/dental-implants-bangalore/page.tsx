@@ -92,7 +92,7 @@ export default function DentalImplants() {
             <div className="relative">
               <img
                 src="https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg"
-                alt="Dental Implant Procedure"
+                alt={language.code === 'ar' ? 'زراعة الأسنان في بنغالور' : 'Dental Implant Procedure'}
                 className="rounded-2xl shadow-2xl w-full"
               />
               <div className="absolute top-4 right-4 bg-white p-3 rounded-lg shadow-lg">
@@ -164,12 +164,12 @@ export default function DentalImplants() {
             <div className="grid grid-cols-2 gap-4">
               <img
                 src="https://images.pexels.com/photos/6529583/pexels-photo-6529583.jpeg"
-                alt="Before dental implant"
+                alt={language.code === 'ar' ? 'قبل زراعة الأسنان' : 'Before dental implant'}
                 className="rounded-2xl shadow-lg"
               />
               <img
                 src="https://images.pexels.com/photos/6529584/pexels-photo-6529584.jpeg"
-                alt="After dental implant"
+                alt={language.code === 'ar' ? 'بعد زراعة الأسنان' : 'After dental implant'}
                 className="rounded-2xl shadow-lg mt-8"
               />
             </div>

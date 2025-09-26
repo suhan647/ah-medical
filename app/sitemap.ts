@@ -2,6 +2,9 @@ import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://ahmedtourisms.com';
+  const languages = ['ar', 'en'];
+  const pages = ['', '/about', '/services', '/treatments', '/contact'];
+  const treatments = ['/treatments/dental-implants-bangalore'];
 
   return [
     {
@@ -27,42 +30,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/treatments/dental-implants-bangalore`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/treatments/prostate-treatment-bangalore`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/treatments/hollywood-smile-bangalore`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/treatments/natural-treatment-bangalore`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/tourism`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-  ];
+  const sitemap: MetadataRoute.Sitemap = [];
+
+  // Generate URLs for each language and page combination
+  languages.forEach(lang => {
+    pages.forEach(page => {
+      const url = page === '' ? `${baseUrl}/${lang}` : `${baseUrl}/${lang}${page}`;
+      const priority = page === '' ? 1 : page === '/contact' ? 0.5 : 0.8;
+      
+      sitemap.push({
+        url,
+        lastModified: new Date(),
+        changeFrequency: page === '' ? 'daily' : page === '/contact' ? 'monthly' : 'weekly',
+        priority,
+      });
+    });
+
+    // Add treatment pages
+    treatments.forEach(treatment => {
+      sitemap.push({
+        url: `${baseUrl}/${lang}${treatment}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.7,
+      });
+    });
+  });
+
+  return sitemap;
 }

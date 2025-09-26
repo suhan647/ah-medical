@@ -47,7 +47,7 @@ const Partners = () => {
                 <div className="relative h-56">
                   <Image
                     src={hospital.image}
-                    alt={`${hospital.name} - JCI Accredited Hospital in Bangalore`}
+                    alt={language.code === 'ar' ? `${hospital.name} - مستشفى معتمد من JCI في بنغالور للسياحة الطبية` : `${hospital.name} - JCI Accredited Hospital in Bangalore for Medical Tourism`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -136,7 +136,7 @@ const Partners = () => {
                 <div className="relative w-24 h-24 rounded-2xl overflow-hidden ring-4 ring-blue-100 flex-shrink-0">
                   <Image
                     src={doctor.image}
-                    alt={`${doctor.name} - ${doctor.specialty} in Bangalore`}
+                    alt={language.code === 'ar' ? `${doctor.name} - ${doctor.specialty} في بنغالور` : `${doctor.name} - ${doctor.specialty} in Bangalore`}
                     fill
                     sizes="96px"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"

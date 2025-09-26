@@ -130,7 +130,7 @@ const Hero = () => {
                 <Image
                   // src="https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg"
                   src="/images/hero-image.jpeg"
-                  alt={language.code === 'ar' ? 'استشارة طبية متخصصة في بنغالور مع مترجم عربي' : 'Specialized medical consultation in Bangalore with Arabic translator'}
+                  alt={language.code === 'ar' ? 'آه للسياحة الطبية - أفضل خدمات العلاج الطبي في بنغالور مع مترجم عربي متخصص، زراعة الأسنان، علاج البروستاتا، جراحة القلب، علاج السرطان' : 'AH Medical Tourism - Best medical treatment services in Bangalore with specialized Arabic translator, dental implants, prostate treatment, cardiac surgery, cancer treatment'}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
