@@ -128,7 +128,8 @@ const Hero = () => {
             <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden medical-shadow">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src="https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg"
+                  // src="https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg"
+                  src="/images/hero-image.jpeg"
                   alt={language.code === 'ar' ? 'استشارة طبية متخصصة في بنغالور مع مترجم عربي' : 'Specialized medical consultation in Bangalore with Arabic translator'}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
