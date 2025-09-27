@@ -38,7 +38,7 @@ export default function Treatments({ params }: Props) {
             {treatments.map((treatment) => (
               <Link
                 key={treatment.id}
-                href={`/treatments/${treatment.slug}`}
+                href={`/${lang}/treatments/${treatment.slug}`}
                 className="group bg-white rounded-2xl p-7 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-teal-200 h-full flex flex-col gap-4"
               >
                 <div className="text-center">
