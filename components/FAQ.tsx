@@ -93,7 +93,13 @@ const FAQ = ({ lang }: FAQProps) => {
               
               <div className="space-y-3">
                 <button
-                  onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
+                  onClick={() => {
+                    const message = lang === 'ar' 
+                      ? 'مرحباً! لدي سؤال'
+                      : 'Hello! I have a question';
+                    const whatsappUrl = `https://wa.me/9481492052?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappUrl, '_blank');
+                  }}
                   className="w-full whatsapp-button flex items-center justify-center space-x-2 rtl:space-x-reverse"
                 >
                   <MessageCircle size={20} />

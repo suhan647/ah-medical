@@ -1,10 +1,18 @@
 "use client";
 
 import Image from 'next/image';
+import { useLanguage } from '@/hooks/useLanguage';
 
 const WhatsAppButton = () => {
+  const { language } = useLanguage();
+  
   const handleClick = () => {
-    window.open('https://wa.me/9481492052', '_blank');
+    const message = language.code === 'ar' 
+      ? 'مرحباً! أريد الاستفسار عن خدماتكم الطبية'
+      : 'Hello! I would like to inquire about your medical services';
+    
+    const whatsappUrl = `https://wa.me/9481492052?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (

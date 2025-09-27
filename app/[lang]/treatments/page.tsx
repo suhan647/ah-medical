@@ -35,12 +35,22 @@ export default function Treatments({ params }: Props) {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
-            {treatments.map((treatment) => (
-              <Link
-                key={treatment.id}
-                href={`/${lang}/treatments/${treatment.slug}`}
-                className="group bg-white rounded-2xl p-7 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-teal-200 h-full flex flex-col gap-4"
-              >
+            {treatments.map((treatment) => {
+              // Create WhatsApp message based on treatment and language
+              const whatsappMessage = lang === 'ar' 
+                ? `مرحباً! أريد الاستفسار عن ${treatment.title[lang]}`
+                : `Hello! I'm interested in ${treatment.title[lang]}`;
+              
+              const whatsappUrl = `https://wa.me/9481492052?text=${encodeURIComponent(whatsappMessage)}`;
+              
+              return (
+                <a
+                  key={treatment.id}
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-white rounded-2xl p-7 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-teal-200 h-full flex flex-col gap-4"
+                >
                 <div className="text-center">
                   <div className="text-5xl mb-3 group-hover:scale-110 transition-transform">
                     {treatment.icon}
@@ -65,8 +75,9 @@ export default function Treatments({ params }: Props) {
                     <ArrowRight size={16} className="rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                   </div>
                 </div>
-              </Link>
-            ))}
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>

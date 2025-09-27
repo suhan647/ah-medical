@@ -89,7 +89,7 @@ export default function ServiceGallery() {
               </ul>
               <div className="mt-5">
                 <a
-                  href="https://wa.me/94814 92052"
+                  href={`https://wa.me/9481492052?text=${encodeURIComponent(language.code === 'ar' ? 'مرحباً! أريد الاستفسار عن الخدمات' : 'Hello! I would like to inquire about services')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex w-full justify-center bg-teal-600 hover:bg-teal-700 text-white py-2.5 rounded-lg font-semibold"

@@ -99,7 +99,13 @@ const Hero = ({ lang }: HeroProps) => {
               </Link>
               
               <button 
-                onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
+                onClick={() => {
+                  const message = validLang === 'ar' 
+                    ? 'مرحباً! أريد الاستفسار عن خدمات السياحة الطبية'
+                    : 'Hello! I would like to inquire about medical tourism services';
+                  const whatsappUrl = `https://wa.me/9481492052?text=${encodeURIComponent(message)}`;
+                  window.open(whatsappUrl, '_blank');
+                }}
                 className="whatsapp-button inline-flex items-center justify-center space-x-2 rtl:space-x-reverse"
               >
                 <span>{heroContent.cta_secondary}</span>
@@ -164,7 +170,13 @@ const Hero = ({ lang }: HeroProps) => {
                         </div>
                       </div>
                       <button
-                        onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
+                        onClick={() => {
+                          const message = validLang === 'ar' 
+                            ? 'مرحباً! أريد التواصل عبر واتساب'
+                            : 'Hello! I would like to contact via WhatsApp';
+                          const whatsappUrl = `https://wa.me/9481492052?text=${encodeURIComponent(message)}`;
+                          window.open(whatsappUrl, '_blank');
+                        }}
                         className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-sm sm:text-base"
                       >
                         {validLang === 'ar' ? 'واتساب' : 'WhatsApp'}

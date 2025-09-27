@@ -107,7 +107,13 @@ const Partners = ({ lang }: PartnersProps) => {
                   </div>
                   
                   <button
-                    onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
+                    onClick={() => {
+                      const message = lang === 'ar' 
+                        ? 'مرحباً! أريد الاستفسار عن المستشفيات'
+                        : 'Hello! I would like to inquire about hospitals';
+                      const whatsappUrl = `https://wa.me/9481492052?text=${encodeURIComponent(message)}`;
+                      window.open(whatsappUrl, '_blank');
+                    }}
                     className="mt-auto cta-primary w-full"
                   >
                     {lang === 'ar' ? 'استفسر الآن' : 'Enquire Now'}
@@ -214,13 +220,25 @@ const Partners = ({ lang }: PartnersProps) => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
-                  onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
+                  onClick={() => {
+                    const message = lang === 'ar' 
+                      ? 'مرحباً! أريد حجز موعد'
+                      : 'Hello! I would like to book an appointment';
+                    const whatsappUrl = `https://wa.me/9481492052?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappUrl, '_blank');
+                  }}
                   className="cta-primary"
                 >
                   {lang === 'ar' ? 'احجز موعدك الآن' : 'Book Your Appointment'}
                 </button>
                 <button
-                  onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
+                  onClick={() => {
+                    const message = lang === 'ar' 
+                      ? 'مرحباً! أريد التواصل عبر واتساب'
+                      : 'Hello! I would like to contact via WhatsApp';
+                    const whatsappUrl = `https://wa.me/9481492052?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappUrl, '_blank');
+                  }}
                   className="whatsapp-button"
                 >
                   {lang === 'ar' ? 'تواصل عبر واتساب' : 'Contact on WhatsApp'}

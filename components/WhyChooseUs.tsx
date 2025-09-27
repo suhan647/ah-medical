@@ -100,13 +100,25 @@ const WhyChooseUs = ({ lang }: WhyChooseUsProps) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
+                onClick={() => {
+                  const message = validLang === 'ar' 
+                    ? 'مرحباً! أريد التواصل معكم'
+                    : 'Hello! I would like to contact you';
+                  const whatsappUrl = `https://wa.me/9481492052?text=${encodeURIComponent(message)}`;
+                  window.open(whatsappUrl, '_blank');
+                }}
                 className="cta-primary"
               >
                 {validLang === 'ar' ? 'تواصل معنا الآن' : 'Contact Us Now'}
               </button>
               <button
-                onClick={() => window.open('https://wa.me/94814 92052', '_blank')}
+                onClick={() => {
+                  const message = validLang === 'ar' 
+                    ? 'مرحباً! أريد الحصول على عرض سعر للعلاج الطبي'
+                    : 'Hello! I would like to get a free quote for medical treatment';
+                  const whatsappUrl = `https://wa.me/9481492052?text=${encodeURIComponent(message)}`;
+                  window.open(whatsappUrl, '_blank');
+                }}
                 className="cta-secondary"
               >
                 {validLang === 'ar' ? 'احصل على عرض سعر' : 'Get Free Quote'}

@@ -29,7 +29,7 @@ export default function Services({ params }: Props) {
             }
           </p>
           <a
-            href="https://wa.me/94814 92052"
+            href={`https://wa.me/9481492052?text=${encodeURIComponent(lang === 'ar' ? 'مرحباً! أريد إرسال تقاريري الطبية' : 'Hello! I would like to send my medical reports')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-6 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
@@ -98,7 +98,7 @@ export default function Services({ params }: Props) {
                   </ul>
 
                   <a
-                    href="https://wa.me/94814 92052"
+                    href={`https://wa.me/9481492052?text=${encodeURIComponent(lang === 'ar' ? `مرحباً! أريد الاستفسار عن ${(s as any).title[lang]}` : `Hello! I'm interested in ${(s as any).title[lang]}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-auto inline-flex w-full justify-center bg-teal-600 hover:bg-teal-700 text-white py-2.5 rounded-lg font-semibold"

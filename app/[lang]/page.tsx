@@ -46,12 +46,22 @@ export default function Home({ params }: Props) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {treatments.map((treatment) => (
-              <Link
-                key={treatment.id}
-                href={`/${lang}/treatments/${treatment.slug}`}
-                className="group professional-card p-8 text-center h-full flex flex-col"
-              >
+            {treatments.map((treatment) => {
+              // Create WhatsApp message based on treatment and language
+              const whatsappMessage = lang === 'ar' 
+                ? `مرحباً! أريد الاستفسار عن ${treatment.title[lang]}`
+                : `Hello! I'm interested in ${treatment.title[lang]}`;
+              
+              const whatsappUrl = `https://wa.me/9481492052?text=${encodeURIComponent(whatsappMessage)}`;
+              
+              return (
+                <a
+                  key={treatment.id}
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group professional-card p-8 text-center h-full flex flex-col"
+                >
                 <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-100 transition-colors duration-300">
                   <span className="text-4xl group-hover:scale-110 transition-transform duration-300">
                     {treatment.icon}
@@ -88,8 +98,9 @@ export default function Home({ params }: Props) {
                   <span>{lang === 'ar' ? 'اعرف المزيد' : 'Learn More'}</span>
                   <ArrowRight size={16} className="rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                 </div>
-              </Link>
-            ))}
+                </a>
+              );
+            })}
           </div>
 
           <div className="text-center mt-12">
