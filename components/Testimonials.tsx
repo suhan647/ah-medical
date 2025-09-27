@@ -37,11 +37,6 @@ const Testimonials = ({ lang }: TestimonialsProps) => {
               key={index}
               className="testimonial-card h-full flex flex-col group hover:scale-105"
             >
-              {/* Quote Icon */}
-              <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                <Quote size={16} className="text-white" />
-              </div>
-
               {/* Header */}
               <div className="flex items-center space-x-4 rtl:space-x-reverse mb-6">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden ring-4 ring-blue-100">

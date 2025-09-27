@@ -46,7 +46,10 @@ export function generateStructuredData(lang: 'ar' | 'en', page?: string) {
         name: lang === 'ar' ? 'آه للسياحة الطبية' : 'AH Medical Tourism',
         medicalSpecialty: [
           'Dentistry', 'Urology', 'Cardiology', 'Oncology', 'Orthopedics', 
-          'Neurology', 'Fertility Medicine', 'Plastic Surgery', 'Ophthalmology'
+          'Neurology', 'Fertility Medicine', 'Plastic Surgery', 'Ophthalmology',
+          'Endocrinology', 'Gastroenterology', 'Pulmonology', 'Dermatology',
+          'Gynecology', 'Pediatrics', 'Psychiatry', 'Radiology', 'Anesthesiology',
+          'Emergency Medicine', 'Internal Medicine', 'General Surgery'
         ],
         availableService: [
           {
@@ -76,6 +79,48 @@ export function generateStructuredData(lang: 'ar' | 'en', page?: string) {
             description: lang === 'ar' 
               ? 'جراحة القلب والأوعية الدموية'
               : 'Heart and cardiovascular surgery'
+          },
+          {
+            '@type': 'MedicalService',
+            name: lang === 'ar' ? 'علاج السكري' : 'Diabetes Treatment',
+            description: lang === 'ar' 
+              ? 'علاج شامل لمرض السكري من النوع الأول والثاني'
+              : 'Comprehensive treatment for Type 1 and Type 2 diabetes'
+          },
+          {
+            '@type': 'MedicalService',
+            name: lang === 'ar' ? 'علاج أمراض القلب' : 'Heart Disease Treatment',
+            description: lang === 'ar' 
+              ? 'علاج أمراض القلب التاجية وقصور القلب'
+              : 'Treatment for coronary heart disease and heart failure'
+          },
+          {
+            '@type': 'MedicalService',
+            name: lang === 'ar' ? 'علاج أمراض الكلى' : 'Kidney Disease Treatment',
+            description: lang === 'ar' 
+              ? 'علاج الفشل الكلوي وحصى الكلى'
+              : 'Treatment for kidney failure and kidney stones'
+          },
+          {
+            '@type': 'MedicalService',
+            name: lang === 'ar' ? 'علاج أمراض الكبد' : 'Liver Disease Treatment',
+            description: lang === 'ar' 
+              ? 'علاج التهاب الكبد وتليف الكبد'
+              : 'Treatment for hepatitis and cirrhosis'
+          },
+          {
+            '@type': 'MedicalService',
+            name: lang === 'ar' ? 'علاج أمراض العظام' : 'Orthopedic Treatment',
+            description: lang === 'ar' 
+              ? 'علاج هشاشة العظام والتهاب المفاصل'
+              : 'Treatment for osteoporosis and arthritis'
+          },
+          {
+            '@type': 'MedicalService',
+            name: lang === 'ar' ? 'علاج أمراض العيون' : 'Eye Disease Treatment',
+            description: lang === 'ar' 
+              ? 'علاج المياه البيضاء والزرقاء'
+              : 'Treatment for cataracts and glaucoma'
           }
         ],
         hasCredential: [

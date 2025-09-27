@@ -5,6 +5,7 @@ import { LanguageProvider } from '@/hooks/useLanguage';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import GupshupWidget from '@/components/GupshupWidget';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import LanguageBoundary from '@/components/LanguageBoundary';
 import DirLangController from '@/components/DirLangController';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo-metadata';
@@ -53,7 +54,6 @@ export default function LocaleLayout({ children, params }: Props) {
         <link rel="alternate" hrefLang="ar" href="https://ahmedtourisms.com/ar" />
         <link rel="alternate" hrefLang="en" href="https://ahmedtourisms.com/en" />
         <link rel="alternate" hrefLang="x-default" href="https://ahmedtourisms.com/ar" />
-        <script async src="https://www.gupshup.ai/whatsapp-widget.js"></script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -69,6 +69,9 @@ export default function LocaleLayout({ children, params }: Props) {
             <main className="overflow-x-hidden">{children}</main>
             <Footer />
             <GupshupWidget />
+            <div className="md:hidden">
+              <WhatsAppButton />
+            </div>
           </LanguageBoundary>
         </LanguageProvider>
       </body>

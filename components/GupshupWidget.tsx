@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 
 // Extend Window interface to include Gupshup function
@@ -12,8 +12,30 @@ declare global {
 
 const GupshupWidget = () => {
   const { language } = useLanguage();
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    // Check if we're on desktop
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 768); // md breakpoint
+    };
+
+    // Initial check
+    checkScreenSize();
+
+    // Listen for resize events
+    window.addEventListener('resize', checkScreenSize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Only load Gupshup widget on desktop
+    if (!isDesktop) return;
+
     // Load the Gupshup script
     const script = document.createElement('script');
     script.src = 'https://www.gupshup.ai/whatsapp-widget.js';
@@ -62,9 +84,18 @@ const GupshupWidget = () => {
         script.parentNode.removeChild(script);
       }
     };
-  }, [language.code]);
+  }, [language.code, isDesktop]);
 
-  return null; // This component doesn't render anything visible
+  // Don't render anything on mobile
+  if (!isDesktop) {
+    return null;
+  }
+
+  return (
+    <div>
+      {/* Gupshup widget will be rendered here on desktop */}
+    </div>
+  );
 };
 
 export default GupshupWidget;
